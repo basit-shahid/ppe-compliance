@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppe-compliance"
+version = "0.1.0"
+description = "Semester prototype for person, helmet, and safety vest detection"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics>=8.3,<9",
+    "opencv-python>=4.8,<5",
+    "numpy>=1.24,<3",
+    "PyYAML>=6,<7",
+]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.35,<2"]
+analysis = ["pandas>=2,<3", "matplotlib>=3.8,<4"]
+
+[project.scripts]
+ppe = "ppe_compliance.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

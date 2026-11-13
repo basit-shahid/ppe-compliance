@@ -1,0 +1,10 @@
+# Copy to a local dataset.yaml and replace paths after auditing annotations.
+# IDs MUST match the actual labels. This mapping is an example, not a conversion.
+path: /absolute/path/to/your/dataset
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: person
+  1: helmet
+  2: vest
