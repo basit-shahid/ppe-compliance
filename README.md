@@ -1,6 +1,5 @@
 # PPE Compliance Detection
-
-Individual, one-month semester prototype based on the PPE project proposal.
+ semester prototype based on the PPE project proposal.
 
 ## Scope
 
