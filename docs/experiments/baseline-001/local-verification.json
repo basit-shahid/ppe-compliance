@@ -1,0 +1,31 @@
+{
+  "model_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "result_archive_sha256": "db14eef8b0b368792f9144fb06b9fc9002f2889f72c4f291fe7a9261c04ff616",
+  "epochs": 30,
+  "reported_training_seconds": 950.731,
+  "class_mapping": {
+    "0": "person",
+    "1": "helmet",
+    "2": "vest"
+  },
+  "local_cpu_checks": [
+    {
+      "run": "outputs/20261114T090254Z-dfc3b596",
+      "detections": 10,
+      "classes": [
+        "person",
+        "vest"
+      ]
+    },
+    {
+      "run": "outputs/20261114T090336Z-f2a41fec",
+      "detections": 3,
+      "classes": [
+        "helmet",
+        "person",
+        "vest"
+      ]
+    }
+  ],
+  "validation_recomputed_locally": false
+}

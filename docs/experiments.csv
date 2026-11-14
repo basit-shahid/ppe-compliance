@@ -1,1 +1,2 @@
 run_id,date,dataset_version,model,config,environment,validation_metrics,notes
+baseline-001,2026-11-14,Construction-PPE Nov2026 three-class 799/200,models/best.pt,docs/experiments/baseline-001/args.yaml,docs/experiments/baseline-001/environment-colab.txt,docs/experiments/baseline-001/validation-metrics.json,"30 epochs on Tesla T4; local CPU loading/inference verified; validation only, recurring scenes and no independent test set"

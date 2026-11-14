@@ -16,3 +16,18 @@ outputs/**
 *.pt
 
 .ultralytics/
+
+# Machine-specific dataset paths; generate from the prepared dataset.
+configs/dataset.yaml
+
+# Local environment/configuration and generated tooling files.
+.env.*
+!.env.example
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.log
+Thumbs.db

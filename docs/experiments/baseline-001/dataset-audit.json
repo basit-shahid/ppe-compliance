@@ -1,0 +1,93 @@
+{
+  "source_config": "/content/ppe-project/data/raw/construction-ppe/data.yaml",
+  "source_names": {
+    "0": "helmet",
+    "1": "gloves",
+    "2": "vest",
+    "3": "boots",
+    "4": "goggles",
+    "5": "Person",
+    "6": "no_helmet",
+    "7": "no_goggle",
+    "8": "no_gloves",
+    "9": "no_boots",
+    "10": "forklift",
+    "11": "no_vest"
+  },
+  "class_mapping": {
+    "0": 1,
+    "2": 2,
+    "5": 0
+  },
+  "reviewed_exclusions": {
+    "train/source-efc23273c04e007083114c0f217335f0.jpg": "Visual review confirmed the same doorway/background composition as val/source-9e10b0409f922546c35b276eb5a5756e.jpg, with a changed worker/PPE. Exclude the training variant to reduce leakage; broader recurring-scene risk remains."
+  },
+  "raw_counts": {
+    "val": {
+      "images": 200,
+      "instances": {
+        "Person": 481,
+        "no_helmet": 179,
+        "no_goggle": 82,
+        "no_gloves": 203,
+        "no_vest": 130,
+        "boots": 481,
+        "vest": 340,
+        "helmet": 294,
+        "gloves": 381,
+        "forklift": 73,
+        "no_boots": 178,
+        "goggles": 139
+      }
+    },
+    "train": {
+      "images": 800,
+      "instances": {
+        "Person": 1962,
+        "vest": 1476,
+        "helmet": 1282,
+        "gloves": 1548,
+        "forklift": 275,
+        "no_gloves": 839,
+        "no_helmet": 634,
+        "no_vest": 437,
+        "goggles": 612,
+        "no_goggle": 265,
+        "no_boots": 569,
+        "boots": 2003
+      }
+    }
+  },
+  "prepared_counts": {
+    "val": {
+      "images": 200,
+      "empty_target_labels": 0,
+      "instances": {
+        "person": 481,
+        "helmet": 294,
+        "vest": 340
+      }
+    },
+    "train": {
+      "images": 799,
+      "empty_target_labels": 8,
+      "instances": {
+        "person": 1961,
+        "helmet": 1281,
+        "vest": 1476
+      }
+    }
+  },
+  "invalid_images": [],
+  "exact_pixel_duplicates_removed": [],
+  "cross_split_near_duplicate_candidates": [
+    {
+      "left": "val/source-9e10b0409f922546c35b276eb5a5756e.jpg",
+      "right": "train/source-efc23273c04e007083114c0f217335f0.jpg",
+      "distance": 4
+    }
+  ],
+  "near_duplicate_method": "64-bit difference hash, Hamming distance <=4; candidates require review",
+  "scene_leakage_status": "not established by hashes; human review required",
+  "test_available": false
+}

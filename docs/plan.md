@@ -1,5 +1,19 @@
 # One-month implementation plan
 
+## Current gates
+
+- Complete: Phase 1 environment and baseline inference.
+- Prepared: Phase 2 training/validation data; independent test data outstanding.
+- Complete baseline: Phase 3 training, validation review and local PPE inference.
+- Next: Phase 4 worker/PPE association and uncertainty-aware image statuses.
+- Then: Phase 5 video/live input, Phase 6 interface, Phase 7 final evaluation/submission.
+
+See `project-status.md` for evidence and `PPE_Project_Comprehensive_Report.pdf`
+for phase details and suggested team roles. The allocations below are the
+original relative schedule, not elapsed dates or a completion promise.
+
+## Original day allocations
+
 - Days 1–2: environment setup and one-image pretrained inference.
 - Days 3–4: audit one dataset and verify class IDs and splits.
 - Days 5–7: short training check, baseline training, and buffer.

@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "e5817aa9c73f33e525d76ca6bc6af4e4eac9dcea9bcfef1cfd1a71c09fbc1232",
+  "bundle_sha256": "30fe99a5762496248b6857ce7597ecf09e74964934e8f5a73ccae9787e99cb41",
+  "python": "3.13.16",
+  "torch": "2.14.1+cu130",
+  "ultralytics": "8.4.212",
+  "gpu": "Tesla T4",
+  "classes": {
+    "0": "person",
+    "1": "helmet",
+    "2": "vest"
+  },
+  "evaluation": "Validation only; independent real-camera test data remains outstanding."
+}

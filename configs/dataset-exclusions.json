@@ -1,0 +1,3 @@
+{
+  "train/source-efc23273c04e007083114c0f217335f0.jpg": "Visual review confirmed the same doorway/background composition as val/source-9e10b0409f922546c35b276eb5a5756e.jpg, with a changed worker/PPE. Exclude the training variant to reduce leakage; broader recurring-scene risk remains."
+}

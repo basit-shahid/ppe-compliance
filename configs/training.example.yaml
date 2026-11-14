@@ -1,6 +1,6 @@
 # Starting configuration, not a proven optimal setup.
 # Run from the repository root after creating configs/dataset.yaml.
-model: yolo11n.pt
+model: models/yolo11n.pt
 data: configs/dataset.yaml
 epochs: 30
 imgsz: 640

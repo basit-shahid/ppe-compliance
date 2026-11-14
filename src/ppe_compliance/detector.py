@@ -43,5 +43,5 @@ def detect_image(
         "confidence_threshold": confidence,
         "device": device,
         "detections": detections,
-        "note": "Object detections only. General pretrained weights are not a PPE compliance model.",
+        "note": "Object detections only. Worker-level PPE association and compliance decisions are not implemented yet.",
     }
