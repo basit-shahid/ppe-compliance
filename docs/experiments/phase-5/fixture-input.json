@@ -1,0 +1,15 @@
+{
+  "kind": "Synthetic integration sequence of validation stills; no natural-motion or independent-accuracy claim",
+  "sources": [
+    "data\\processed\\ppe-three-class\\images\\val\\ultralytics-ppe-nov2026-705.jpg",
+    "data\\processed\\ppe-three-class\\images\\val\\source-00f1fbfd9c8193a3c5a071512cf8c0a7.jpg",
+    "data\\processed\\ppe-three-class\\images\\val\\source-150feca69395fa769adccdc8e157e935.jpg"
+  ],
+  "resolution": [
+    960,
+    540
+  ],
+  "fps": 6,
+  "frames": 30,
+  "frames_per_scene": 10
+}

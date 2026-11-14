@@ -5,8 +5,9 @@
 - Complete: Phase 1 environment and baseline inference.
 - Prepared: Phase 2 training/validation data; independent test data outstanding.
 - Complete baseline: Phase 3 training, validation review and local PPE inference.
-- Next: Phase 4 worker/PPE association and uncertainty-aware image statuses.
-- Then: Phase 5 video/live input, Phase 6 interface, Phase 7 final evaluation/submission.
+- Implemented baseline: Phase 4 image association, conservative statuses and tests.
+- Implemented baseline: Phase 5 video/webcam, JSONL output, cleanup and short-run benchmarks.
+- Next: Phase 6 interface; then Phase 7 independent evaluation/submission.
 
 See `project-status.md` for evidence and `PPE_Project_Comprehensive_Report.pdf`
 for phase details and suggested team roles. The allocations below are the

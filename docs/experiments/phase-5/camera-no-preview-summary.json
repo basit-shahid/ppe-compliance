@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "stopped",
+  "stop_reason": "max_frames",
+  "error": null,
+  "run_directory": "outputs\\phase5-camera\\20261114T104211Z-260915c1",
+  "source": "camera:0",
+  "source_kind": "webcam",
+  "source_sha256": null,
+  "source_fps_metadata": null,
+  "source_frame_count_metadata": null,
+  "output_fps": 10.0,
+  "output_duration_seconds": 0.5,
+  "output_resolution": [
+    640,
+    480
+  ],
+  "processed_frames": 5,
+  "intentional_frame_skipping": false,
+  "image_size": 416,
+  "confidence_threshold": 0.25,
+  "weights": "models/best.pt",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "model_classes": {
+    "0": "person",
+    "1": "helmet",
+    "2": "vest"
+  },
+  "device": "cpu",
+  "rules": {
+    "min_confidence": 0.5,
+    "min_person_height": 80.0,
+    "min_person_width": 20.0,
+    "min_equipment_size": 5.0,
+    "min_region_coverage": 0.65,
+    "ownership_margin": 0.15,
+    "person_overlap_iou": 0.35,
+    "border_margin": 2.0
+  },
+  "preview_enabled": false,
+  "platform": "Windows-10-10.0.19045-SP0",
+  "processing_wall_seconds": 6.094204600000012,
+  "end_to_end_processing_fps": 0.8204516139809271,
+  "total_wall_seconds": 13.27990470000077,
+  "model_load_seconds": 6.379947999999786,
+  "first_output_seconds_since_start": 12.815340900000592,
+  "frame_latency_seconds": {
+    "mean": 1.207764479999605,
+    "min": 0.08071139999992738,
+    "max": 5.6294840999999,
+    "first": 5.6294840999999
+  },
+  "frame_latency_scope": "read through JSONL flush; progress/stop handling and final resource flushing are included in wall-clock throughput instead",
+  "worker_observations": {
+    "PPE detected": 0,
+    "potential violation": 0,
+    "review required": 0
+  },
+  "note": "Worker observations are per frame, not unique people. No tracking or automatic missing-PPE violations. Model-input size and source resolution affect speed and recall. Webcam driver buffering/drops are not measured; stream elapsed time is not a device capture timestamp. Constant-FPS webcam output may play faster/slower than wall time. EOF and decode failure cannot always be distinguished from backend metadata."
+}

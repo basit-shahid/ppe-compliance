@@ -13,6 +13,17 @@ Copy-Item data/processed/ppe-three-class/dataset.yaml configs/dataset.yaml
 Download/extract the audited source first; see `docs/dataset-audit.md`. The script
 refuses to overwrite an existing destination. The generated local YAML is ignored.
 
+## Create a video integration sample
+
+```powershell
+.\.venv\Scripts\python.exe scripts/make_video_sample.py
+```
+
+Requires the audited prepared validation images. Generates a 30-frame sequence
+of validation stills at 960x540/6 FPS, with provenance JSON. It is not natural-motion
+footage or independent accuracy evidence. Existing outputs are not overwritten;
+use `--output` for another location. See `docs/phase-5.md`.
+
 ## Build Colab upload artifacts
 
 Python 3.11+; requires local `models/yolo11n.pt` initialization weights.

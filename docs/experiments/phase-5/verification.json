@@ -1,0 +1,37 @@
+{
+  "scope": "Two recorded synthetic validation-still checks and two bounded physical-camera checks; no natural-motion/worker accuracy or sustained-speed claim",
+  "automated_tests": 59,
+  "runtime_packages_at_verification": {
+    "ultralytics": "8.4.212",
+    "torch": "2.15.0",
+    "opencv-python": "4.14.0.94",
+    "numpy": "2.5.4"
+  },
+  "checks": [
+    {
+      "case": "recorded-validation-sequence",
+      "decoded_output_frames": 30,
+      "report_rows": 30,
+      "indices_and_dimensions_match": true
+    },
+    {
+      "case": "camera-no-preview",
+      "decoded_output_frames": 5,
+      "report_rows": 5,
+      "indices_and_dimensions_match": true
+    },
+    {
+      "case": "camera-preview",
+      "decoded_output_frames": 5,
+      "report_rows": 5,
+      "indices_and_dimensions_match": true
+    },
+    {
+      "case": "recorded-final-layout",
+      "decoded_output_frames": 30,
+      "report_rows": 30,
+      "indices_and_dimensions_match": true
+    }
+  ],
+  "camera_media": "Kept in ignored local outputs only; not copied into documentation evidence"
+}

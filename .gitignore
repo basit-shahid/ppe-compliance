@@ -31,3 +31,7 @@ build/
 dist/
 *.log
 Thumbs.db
+
+# Device-specific experiments and local-only overrides.
+.local/
+docs/experiments/phase-5/camera-control-check.json

@@ -6,10 +6,17 @@ content is unavailable; this checkpoint preserves evidence for future sessions.
 
 ## Current state
 
-- Implemented: single-image YOLO detection, annotated JPEG and JSON output,
-  argument validation, and unique output directories.
-- Placeholders: person/PPE association, compliance rules, video pipeline, and
-  Streamlit interface.
+- Implemented: single-image YOLO detection and worker/PPE association, conservative
+  statuses, explanations, overlays, raw/compliance JSON, optional manual visibility
+  input, argument validation and unique outputs. See `docs/phase-4.md`.
+- Phase 5: reusable model, recorded-video/webcam commands, MP4/JSONL/summary
+  outputs, stop/error cleanup and measured short-run speed. See `docs/phase-5.md`.
+- Placeholder: Streamlit interface.
+- Phase 4 checks: 35 automated rule/CLI tests; four real-model CPU development
+  examples. Independent worker-level accuracy and threshold calibration remain open.
+- Total suite: 59 tests pass. File test: 30 synthetic validation-still frames,
+  1.31-3.34 CPU processing FPS across two runs; two five-frame camera checks verified capture,
+  preview and cleanup. Natural-motion accuracy and sustained speed remain unmeasured.
 - Prepared: Construction-PPE November 2026, remapped to person/helmet/vest;
   799 training and 200 validation images in `data/processed/ppe-three-class/`.
   Dataset configuration: `configs/dataset.yaml`; audit: `docs/dataset-audit.md`.
@@ -32,8 +39,8 @@ content is unavailable; this checkpoint preserves evidence for future sessions.
 | 1: Foundation | Proposal review, repository audit, Windows setup, baseline inference | CLI works, dependencies pass checks, readable image and JSON generated | Complete |
 | 2: Dataset | Audit one source; verify classes, boxes, splits, duplicates and scene leakage | Audited training/validation data and real `configs/dataset.yaml`; evaluation limitations documented | Training data ready; independent test set outstanding |
 | 3: Training | Short training check, baseline fine-tuning, validation analysis | Saved PPE weights, configuration, environment and validation metrics | Baseline complete; results reviewed and local inference verified |
-| 4: Image compliance | Associate helmets/head regions and vests/torso regions with workers; render statuses | Checked cases for PPE present, missing, held, occluded and overlapping | Pending |
-| 5: Video | Process recorded video, measure FPS, then attempt webcam | Playable annotated video and speed on stated hardware/settings | Pending |
+| 4: Image compliance | Associate helmets/head regions and vests/torso regions with workers; render statuses | Controlled ambiguity/held/missing/quality cases and real CPU examples | Image baseline implemented and checked; no independent accuracy claim |
+| 5: Video | Process recorded video, measure FPS, then attempt webcam | Readable annotated MP4/JSONL, short CPU benchmark and camera checks | Baseline implemented and checked; no sustained real-time claim |
 | 6: Interface | Connect verified pipeline to optional Streamlit UI | Repeatable image/video demonstration and clear error handling | Pending |
 | 7: Evaluation and submission | Held-out and cross-source checks, report, slides, rehearsal | Recorded metrics, failure analysis and backup demonstration | Pending |
 
@@ -42,9 +49,9 @@ moving to the next core phase. Update this checkpoint with actual results.
 
 ## Immediate steps
 
-1. Phase 4: implement person-to-helmet/vest association, ambiguity handling,
-   per-worker statuses and image overlays using `models/best.pt`.
-2. Verify held equipment, overlaps, missing detections, occlusion and distant workers.
+1. Phase 6: connect the verified image/video functions to a minimal Streamlit UI.
+2. Collect natural-motion clips and benchmark sustained performance; do not infer
+   a real-time guarantee from short cold-start checks.
 3. Obtain and freeze independent real-camera evaluation data before final testing.
 
 The proposal names Ultralytics Construction-PPE, Roboflow Construction Site Safety

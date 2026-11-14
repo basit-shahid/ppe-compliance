@@ -1,12 +1,12 @@
-﻿# PPE Compliance Detection
+# PPE Compliance Detection
 
 A semester AI project using a fine-tuned YOLO11 nano model to detect workers,
 helmets and high-visibility safety clothing. Development follows seven phases
 covering data, training, worker-level PPE checks, video and final evaluation.
 
-**Current milestone:** PPE training and local still-image inference are complete.
-Association, compliance decisions, project video processing and the interface
-are planned. Object detection alone does not establish workplace safety.
+**Current milestone:** PPE training, image assessment, recorded video and local
+webcam processing are implemented. The demonstration interface is next. Geometry
+matches and model detections do not establish wearing state or workplace safety.
 
 [Comprehensive report (PDF)](docs/PPE_Project_Comprehensive_Report.pdf) ·
 [Current checkpoint](docs/project-status.md) · [Documentation index](docs/README.md)
@@ -15,12 +15,16 @@ are planned. Object detection alone does not establish workplace safety.
 
 - Detect `person`, `helmet` and `vest` using selected PPE weights.
 - Export annotated JPEG and JSON into a unique directory for every image run.
+- Match plausible helmet/vest regions to workers, flag ambiguity and explain
+  per-worker statuses using `ppe assess`.
+- Process recorded video/webcam frames with one loaded model, save annotated MP4
+  and streaming JSONL, and report measured processing speed.
 - Reject missing/corrupt images and invalid confidence/image-size values.
 - Reproduce dataset preparation and Colab GPU training.
 - Review recorded configuration, metrics, provenance and failure analysis.
 
 The source `vest` label includes high-visibility jackets and shirts. Worker-level
-statuses are not implemented yet; detecting a helmet does not prove it is worn.
+statuses are conservative heuristics; detecting a helmet does not prove it is worn.
 
 ![Local PPE detection example](docs/assets/phase-3-local-detection.jpg)
 
@@ -41,7 +45,7 @@ using **799 training and 200 validation images**.
 
 These are development measurements, not overall real-world accuracy. Helmet recall
 is weakest (76.53%). Recurring/generated scenes limit validation independence.
-An independent real-camera test set and end-to-end video benchmarks are pending.
+An independent real-camera test set and sustained deployment benchmarks are pending.
 See [training review](docs/phase-3-results.md), [experiment log](docs/experiments.csv)
 and [baseline evidence](docs/experiments/baseline-001/).
 
@@ -105,12 +109,63 @@ On a fresh clone, reproduce training and copy exported `weights/best.pt` to
 Every run creates `outputs/<unique-run>/annotated.jpg` and `detections.json`.
 JSON includes class names, confidence and original-image pixel boxes
 `[left, top, right, bottom]`. Confidence is a model score, not a calibrated probability.
-Only local still images are supported by the project CLI at this milestone.
+`detect` and `assess` process local still images; see the video/webcam commands below.
+
+## Assess PPE for individual workers
+
+```powershell
+.\.venv\Scripts\ppe.exe assess --source "D:\path\to\photo.jpg" --weights models/best.pt --device cpu
+```
+
+This adds worker/item association, status overlays, `compliance.json` and an
+optional `visibility-template.json` alongside raw detections. The default weights
+for `assess` are `models/best.pt`. General pretrained weights are rejected.
+
+- **PPE detected:** both items plausibly matched and no quality/visibility warning.
+- **Review required:** uncertain/ambiguous evidence, low resolution/confidence,
+  truncation/overlap, or missing matches with unknown body-region visibility.
+- **Potential violation:** an item is unconfirmed in a manually reviewed visible
+  region, with no other warning. It is not proof of absence.
+
+Missing equipment detections **default to review**, not automatic violations.
+Worker IDs are frame-local, not persistent tracking identities. Read the
+[Phase 4 guide](docs/phase-4.md) for manual visibility review, rules and limitations.
+
+## Recorded video and webcam
+
+```powershell
+.\.venv\Scripts\ppe.exe video --source "D:\path\to\clip.mp4" --weights models/best.pt --device cpu
+.\.venv\Scripts\ppe.exe webcam --camera 0 --weights models/best.pt --image-size 416 --device cpu
+```
+
+Webcam preview opens by default. Stop with **Q**, **Esc**, window close or **Ctrl+C**.
+For a bounded headless camera check, add `--no-preview --max-frames 30`.
+Recorded videos run without a window unless `--preview` is supplied.
+
+Each run saves `annotated.mp4`, `frames.jsonl` and `summary.json`. Output is silent;
+webcam recordings use constant 10 FPS playback by default, which can differ from
+actual capture/processing time. `--output-fps` controls playback, not processing.
+IDs/status counts are per frame, not persistent tracking or unique-worker counts.
+Missing PPE still defaults to review; manual visibility is not propagated over video.
+
+Local checks: two runs of a 30-frame synthetic validation-still sequence at
+960x540/input 640 measured **1.31-3.34 FPS** on CPU. Two five-frame checks verified capture,
+preview and cleanup. Short cold-start measurements do not establish sustained
+real-time performance or natural-motion accuracy. Results vary with CPU/GPU, camera
+driver, lighting and resolution; another laptop must be benchmarked separately. See the [Phase 5 guide](docs/phase-5.md).
 
 For a general-object setup check, use `--weights yolo11n.pt`; Ultralytics downloads
 these weights if absent. General weights are not our fine-tuned PPE detector.
 The recorded [public bus sample](https://raw.githubusercontent.com/ultralytics/assets/main/im/bus.jpg)
 baseline detected four people and one bus.
+
+## Live-performance limitations
+
+The current stream loop reads, predicts, assesses, draws, records and displays
+sequentially. Slow inference or camera buffering can make the preview lag. A lower
+`--image-size` can improve speed at the cost of small-equipment recall. Latest-frame
+capture, decoupled display and optional recording are proposed optimizations, not
+implemented features. Current results do not guarantee smooth 25-30 FPS inference.
 
 ## Dataset preparation
 
@@ -169,12 +224,12 @@ laptop setup-verification command.
 | 1 | Environment and baseline image pipeline | Complete |
 | 2 | Dataset audit and preparation | Train/validation ready; independent test pending |
 | 3 | PPE training and validation analysis | Baseline complete; local model verified |
-| 4 | Worker/PPE association and image statuses | Next |
-| 5 | Recorded video, speed measurement and webcam integration | Planned |
-| 6 | Optional Streamlit demonstration interface | Planned |
+| 4 | Worker/PPE association and image statuses | Image baseline implemented and checked |
+| 5 | Recorded video, speed measurement and webcam integration | Baseline checked; short CPU/camera measurements recorded |
+| 6 | Optional Streamlit demonstration interface | Next |
 | 7 | Independent evaluation, report and presentation | Planned |
 
-Planned statuses: **PPE detected**, **potential violation**, **review required**.
+Assessment statuses: **PPE detected**, **potential violation**, **review required**.
 Missing detections alone do not prove missing equipment. Tracking, restricted zones,
 operational violation logging and dashboards remain future extensions.
 The Streamlit app is currently a placeholder.
@@ -186,7 +241,8 @@ for acceptance gates, implementation details and suggested three-member roles.
 
 ```text
 ppe-compliance/
-|-- src/ppe_compliance/    # CLI, detector and planned association/rule/video modules
+|-- src/ppe_compliance/    # Reusable detection, association, rules, rendering and video
+|-- tests/                # Rule and CLI integration tests
 |-- configs/              # Shared examples and reviewed exclusions; local YAML ignored
 |-- scripts/              # Data preparation, Colab packaging and PDF generation
 |-- notebooks/            # Colab training notebook
@@ -206,8 +262,14 @@ ppe-compliance/
 
 Verified: CLI help/version, `pip check`, general/PPE CPU inference, readable output
 images and valid JSON boxes, invalid inputs, dataset loader, preparation fixtures,
-notebook syntax/resume branches, and PDF structure/layout. No committed automated
-test suite or independently verified project video pipeline exists yet.
+notebook syntax/resume branches, and PDF structure/layout. Phase 4 adds 35 rule/CLI
+tests and four real-model CPU integration checks on development examples. Phase 5
+extends the suite to 59 tests, verifies video output readback, and checks camera
+capture/preview. These do not measure independent compliance accuracy.
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
 
 Keep final test data out of tuning. Evaluate per-class detection, worker-level
 outcomes, review rate, missed workers and end-to-end speed. Include distant workers,

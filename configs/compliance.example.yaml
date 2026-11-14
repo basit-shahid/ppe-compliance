@@ -1,0 +1,14 @@
+# Geometry heuristics, not calibrated accuracy guarantees. Defaults shown.
+# Confidence is separate from the detector's --confidence threshold.
+min_confidence: 0.5
+# Minimum dimensions measured at the requested model-input scale.
+min_person_height: 80.0
+min_person_width: 20.0
+min_equipment_size: 5.0
+# Fraction of equipment box inside a plausible head/torso region.
+min_region_coverage: 0.65
+# Smaller candidate-score gaps mean ambiguous ownership.
+ownership_margin: 0.15
+person_overlap_iou: 0.35
+# Border proximity in model-input pixels creates a visibility warning.
+border_margin: 2.0

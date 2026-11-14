@@ -1,0 +1,52 @@
+{
+  "scope": "CPU integration checks on development validation examples; not independent accuracy evaluation",
+  "model_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "test_command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+  "automated_tests": 35,
+  "samples": [
+    {
+      "source": "ultralytics-ppe-nov2026-705.jpg",
+      "run": "outputs\\phase4\\20261114T101946Z-6d992ca2",
+      "summary": {
+        "workers": 1,
+        "PPE detected": 1,
+        "potential violation": 0,
+        "review required": 0
+      },
+      "checks": "readable image, original dimensions, unique equipment ownership"
+    },
+    {
+      "source": "source-150feca69395fa769adccdc8e157e935.jpg",
+      "run": "outputs\\phase4\\20261114T102036Z-a4c2ff49",
+      "summary": {
+        "workers": 8,
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 8
+      },
+      "checks": "readable image, original dimensions, unique equipment ownership"
+    },
+    {
+      "source": "ultralytics-ppe-nov2026-123.jpg",
+      "run": "outputs\\phase4\\20261114T102051Z-b569bda3",
+      "summary": {
+        "workers": 1,
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 1
+      },
+      "checks": "readable image, original dimensions, unique equipment ownership"
+    },
+    {
+      "source": "source-00f1fbfd9c8193a3c5a071512cf8c0a7.jpg",
+      "run": "outputs\\phase4\\20261114T102109Z-d1409bb1",
+      "summary": {
+        "workers": 1,
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 1
+      },
+      "checks": "readable image, original dimensions, unique equipment ownership"
+    }
+  ]
+}
