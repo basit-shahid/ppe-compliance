@@ -1,0 +1,7 @@
+{
+  "scope": "Local short camera runs, not independent PPE accuracy or controlled A/B benchmark",
+  "automated_tests": 86,
+  "recording_readback_frames": 5,
+  "preview_only_media_files_created": false,
+  "camera_media": "Local ignored outputs only; no camera media copied into docs"
+}

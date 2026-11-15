@@ -1,0 +1,50 @@
+{
+  "cell_3": {
+    "cell": 3,
+    "input_value": "\"\"",
+    "reproduced_error": "WEIGHTS_PATH is missing or differs from the selected trained model: \"\"",
+    "automatic_selection_same_model": true
+  },
+  "earlier_detection_failure": {
+    "source": "data/samples/my-test-video.mp4",
+    "same_sha256_as_failed_run": true,
+    "frame_index": 209,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "original_behavior": {
+      "reproduced": true,
+      "exception": "Invalid bounding box for detection 6"
+    },
+    "detector_validation": {
+      "model_count": 7,
+      "accepted_count": 6,
+      "rejected_count": 1,
+      "rejected_detections": [
+        {
+          "model_detection_index": 6,
+          "class_id": 1,
+          "class_name": "helmet",
+          "confidence": 0.29486188292503357,
+          "bbox_xyxy": [
+            1490.8365478515625,
+            0.0,
+            1920.0,
+            0.0
+          ],
+          "reason": "zero-area or inverted bounding box"
+        }
+      ],
+      "policy": "Reject invalid model predictions; preserve all source frames and valid boxes. Non-finite diagnostic values are null. Accepted-list indices remain the report detection IDs."
+    },
+    "fixed_assessment_summary": {
+      "workers": 3,
+      "PPE detected": 0,
+      "potential violation": 0,
+      "review required": 3
+    },
+    "source_sha256": "af824ddaae71b2adc78cca35bb148d5cd96705d4f748b1a52f61ab0b96dbc779",
+    "note": "Earlier 1080p clip at the same pathname. The input file was later replaced; the full notebook execution used the separately hashed 4K clip."
+  }
+}

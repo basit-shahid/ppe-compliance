@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "mode": "latest-frame",
+  "status": "stopped",
+  "stop_reason": "duration",
+  "error": null,
+  "run_directory": "outputs\\live-performance-final\\20261114T123156Z-95e745b3",
+  "source": "camera:0",
+  "image_size": 320,
+  "device": "cpu",
+  "confidence_threshold": 0.25,
+  "source_resolution": [
+    640,
+    480
+  ],
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.13.3",
+  "packages": {
+    "ultralytics": "8.4.212",
+    "torch": "2.15.0",
+    "opencv-python": "4.14.0.94",
+    "numpy": "2.5.4"
+  },
+  "weights": "models/best.pt",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "camera": {
+    "backend": "dshow",
+    "controls": {},
+    "restore_warnings": []
+  },
+  "recording_enabled": false,
+  "recorded_frames": 0,
+  "recording_playback_fps": null,
+  "recording_resolution": null,
+  "audio_preserved": false,
+  "captured_frames": 552,
+  "processed_frames": 128,
+  "captured_but_not_processed": 424,
+  "intentional_frame_skipping": true,
+  "total_wall_seconds": 20.254790299997694,
+  "inference_active_seconds": 14.4923155999968,
+  "assessment_throughput_fps": 8.832266942905125,
+  "preview_enabled": true,
+  "preview_ticks": 625,
+  "unique_live_frames_displayed": 516,
+  "distinct_recent_results_displayed": 126,
+  "preview_active_seconds": 19.947598099999595,
+  "live_preview_fps": 25.867776030639522,
+  "model_load_seconds": 5.75646770000094,
+  "stale_after_seconds": 0.5,
+  "application_result_latency_seconds": {
+    "mean": 0.12842603671873576,
+    "min": 0.05754800000067917,
+    "max": 4.8053570999982185,
+    "first": 4.8053570999982185,
+    "mean_after_first": 0.09159980787401542
+  },
+  "application_queue_wait_mean_seconds": 0.017305559375131452,
+  "worker_observations": {
+    "PPE detected": 0,
+    "potential violation": 0,
+    "review required": 0
+  },
+  "note": "Live pane has no AI boxes. Analyzed pane uses its own source frame and hides after the age limit. Age starts at application read, not sensor exposure; driver/network buffering is unmeasured. Frame skipping is intentional. Recording contains analyzed frames only at constant playback FPS. Worker IDs are frame-local; no tracking or automatic missing-PPE violations."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "mode": "latest-frame",
+  "status": "stopped",
+  "stop_reason": "duration",
+  "error": null,
+  "run_directory": "outputs\\live-performance-check\\20261114T122731Z-02be0c40",
+  "source": "camera:0",
+  "image_size": 320,
+  "device": "cpu",
+  "confidence_threshold": 0.25,
+  "weights": "models/best.pt",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "camera": {
+    "backend": "dshow",
+    "controls": {},
+    "restore_warnings": []
+  },
+  "recording_enabled": false,
+  "recorded_frames": 0,
+  "recording_playback_fps": null,
+  "captured_frames": 540,
+  "processed_frames": 109,
+  "captured_but_not_processed": 431,
+  "intentional_frame_skipping": true,
+  "total_wall_seconds": 20.168081800002255,
+  "inference_active_seconds": 13.419638600000326,
+  "assessment_throughput_fps": 8.122424399715008,
+  "preview_enabled": true,
+  "preview_ticks": 593,
+  "unique_live_frames_displayed": 492,
+  "distinct_recent_results_displayed": 107,
+  "live_preview_fps": 24.394982372589592,
+  "model_load_seconds": 6.723002300001099,
+  "stale_after_seconds": 0.5,
+  "application_result_latency_seconds": {
+    "mean": 0.14089991559630016,
+    "min": 0.060626399998000124,
+    "max": 5.069839800002228,
+    "first": 5.069839800002228,
+    "mean_after_first": 0.0952615833332823
+  },
+  "application_queue_wait_mean_seconds": 0.019484195412671164,
+  "worker_observations": {
+    "PPE detected": 0,
+    "potential violation": 0,
+    "review required": 109
+  },
+  "note": "Live pane has no AI boxes. Analyzed pane uses its own source frame and hides after the age limit. Age starts at application read, not sensor exposure; driver/network buffering is unmeasured. Frame skipping is intentional. Recording contains analyzed frames only at constant playback FPS. Worker IDs are frame-local; no tracking or automatic missing-PPE violations."
+}

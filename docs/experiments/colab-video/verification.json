@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-15",
+  "automated_tests": 152,
+  "result": "pass",
+  "targeted_benchmark_tests": 5,
+  "notebook_python_cells_parsed": 8,
+  "bundle_bytes": 4991941,
+  "bundle_sha256": "a20ed7ebd3830a8ef836901147ccd738364c23b391d599f82ab08f1a021dd436",
+  "bundle_members_verified": 16,
+  "current_source_matches_bundle": true,
+  "real_model_cpu_check": {
+    "status": "completed",
+    "views": [
+      "frame",
+      "dashboard"
+    ],
+    "frames_each": [
+      6,
+      6
+    ],
+    "decoded_frames_each": [
+      6,
+      6
+    ],
+    "identical_decoded_source_range": true,
+    "h264_readback": true,
+    "source_kind": "Development validation-still sequence, not natural motion or independent accuracy."
+  },
+  "gpu_execution": "Pending user Colab session; local runtime is CPU-only.",
+  "scope": "Notebook/package/CPU integration validation only. Short cold-start CPU checks are not comparative speed claims.",
+  "colab_box_fix": {
+    "trigger": "User Colab run failed on invalid bounding box for detection 5.",
+    "regression": "Actual Ultralytics Results with a malformed sixth detection are filtered and remain aligned with JSON. Three-frame video keeps all three decodable frames and audits rejections.",
+    "strict_association_checks": "Unchanged; invalid external association inputs still raise.",
+    "recovery": "Source-only repair preserves weights and video, clears matching module cache; rerun benchmark cell.",
+    "repair_file": "outputs/colab-video/ppe_colab_box_fix.py",
+    "repair_sha256": "2d71c692ea8b964e5bfdd96d008265ccdc436dcbbefcd07576d38a4281f9f705",
+    "gpu_retest": "Pending rerun in user Colab runtime."
+  },
+  "ready_notebook": {
+    "path": "notebooks\\PPE_Video_GPU_Ready.ipynb",
+    "bytes": 85374,
+    "source_sha256": "ca7afeecd531603b2cbb8e629306744edff8a20967a8f67147ca2d897242c527",
+    "source_members_verified": 16,
+    "notebook_upload_widgets": 0,
+    "embedded_weights": false,
+    "default": "GPU only, dashboard, 300 frames, one repetition",
+    "early_checks": [
+      "GPU availability",
+      "Fixed-source/hash self-check",
+      "Model hash and video selection",
+      "First-frame/FPS decode",
+      "8-frame CUDA smoke/export/readback"
+    ],
+    "local_checks": [
+      "Embedded source executed over stale imports in an isolated process",
+      "Old bundles supply model only",
+      "Duplicate videos and ambiguous selection",
+      "Failed preflight blocks benchmark",
+      "Interrupt preserves partial report"
+    ],
+    "real_model_cpu_export": {
+      "frames": 8,
+      "decoded_frames": 8,
+      "resolution": [
+        1280,
+        720
+      ],
+      "status": "completed"
+    },
+    "gpu_execution": "Pending user Colab runtime; local environment has no CUDA device."
+  },
+  "real_notebook_execution": {
+    "device": "cpu",
+    "cuda_emulated": false,
+    "code_cells": 8,
+    "frames": 270,
+    "first_error": null,
+    "source_resolution": [
+      3840,
+      2160
+    ],
+    "source_fps": 25,
+    "quoted_empty_path_regression": true,
+    "source_snapshot_matches_distributed_notebook": true,
+    "report": "notebook-execution.json",
+    "root_causes": "root-causes.json"
+  }
+}

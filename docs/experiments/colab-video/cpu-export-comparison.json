@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "image_size": 416,
+  "confidence": 0.25,
+  "max_frames": 90,
+  "repeats": 2,
+  "warmup_frames": 5,
+  "tracking": true,
+  "show_scores": true,
+  "equipment_detail": false,
+  "browser_preview_enabled": true,
+  "export_profiles": [
+    "standard",
+    "efficient"
+  ],
+  "pipeline_source_sha256": {
+    "detector.py": "78f7fa2e340ce2038cde043a593b69c541313b6318d208873bf9e34d15cb36dc",
+    "association.py": "85b980a81c83a7e76fbfae1b8d117c992db1a395754e16ee2899ac18f30aa77f",
+    "compliance.py": "ef1082d97bf137752ca70a023519a4ea8b4bd5d447cb9812f2746c476ae0b4fb",
+    "video_pipeline.py": "b2b258fb0511163e3cb4633649629e8c2354f7f6f1d678661072a3cbbe869285",
+    "rendering.py": "5f9990542865bcf0c918140066c394e9e8b8d81f92ad03f9e90309ba1acaa284",
+    "preview_ui.py": "7a5c32e86ee243837a0ff8d493f68894fd8836eb03485c8b2e41447d9c50f9e3",
+    "tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208",
+    "benchmark.py": "4a1edcc6bc4b27c0b5ad0d01251c6b9d4f4487edd692188ed6d9d4f6dd5f4aee",
+    "video_export.py": "adfa89df74cb3669b18cff0ebef97ad9a1be10b2b415cfbded2a8c1beb347e87",
+    "interface.py": "479fae390213c9e44614d21b21030aeb13f5e23cc553e6d065167f9913914dce"
+  },
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.13.3",
+    "torch": "2.15.0+cpu",
+    "cuda_runtime": null,
+    "gpu": null,
+    "torch_cpu_threads": 2
+  },
+  "runs": [
+    {
+      "label": "cpu-dashboard-r1",
+      "device": "cpu",
+      "view": "dashboard",
+      "repeat": 1,
+      "run_directory": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r1\\20261115T143754Z-69493f19",
+      "frames": 90,
+      "export_profile": "standard",
+      "source_fps": 25.0,
+      "output_fps": 25.0,
+      "source_resolution": [
+        3840,
+        2160
+      ],
+      "model_load_seconds": 0.6900037000013981,
+      "pipeline_fps": 1.1790109128896225,
+      "job_seconds": 80.15071319999697,
+      "job_fps": 1.122884580894826,
+      "source_seconds_processed": 3.6,
+      "h264_conversion_seconds": 2.8155983000033302,
+      "preview_file": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r1\\20261115T143754Z-69493f19\\preview.mp4",
+      "decoded_frame_range_sha256": "d852c5db016be36f1446479001f7a075e42f7ac030ccbc2f0f208a2e8d680ff1",
+      "verification": {
+        "decoded_frames": 90,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 85,
+      "mean_stage_ms": {
+        "decode": 72.82210000061349,
+        "frame_setup": 0.18674823547959984,
+        "inference": 205.70456823419698,
+        "assessment_and_hash": 151.2948294125689,
+        "render": 187.9569917639909,
+        "encode_submission": 173.00529882349485
+      },
+      "median_inference_ms": 131.33219999144785,
+      "inference_only_fps": 4.861340749912217,
+      "first_inference_ms": 5808.377699999255,
+      "detection_validation": {
+        "rejected_count": 0,
+        "frames_with_rejections": 0
+      },
+      "assessment_evidence_sha256": "50e8dbeac1d1221624bb901111a9e197701019e9bf07d55dbfb2c8e05bf65e9d",
+      "mean_assessment_detail_ms": {
+        "decoded_frame_sha256": 150.135025882799,
+        "rules_and_tracking": 1.1598035297698945
+      }
+    },
+    {
+      "label": "cpu-dashboard-r1-efficient",
+      "device": "cpu",
+      "view": "dashboard",
+      "repeat": 1,
+      "run_directory": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r1-efficient\\20261115T143915Z-50a9cc72",
+      "frames": 90,
+      "export_profile": "efficient",
+      "source_fps": 25.0,
+      "output_fps": 25.0,
+      "source_resolution": [
+        3840,
+        2160
+      ],
+      "model_load_seconds": 0.2636627000028966,
+      "pipeline_fps": 2.1053928106923854,
+      "job_seconds": 43.23488219999126,
+      "job_fps": 2.081652485687082,
+      "source_seconds_processed": 3.6,
+      "h264_conversion_seconds": 0.0,
+      "preview_file": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r1-efficient\\20261115T143915Z-50a9cc72\\dashboard.mp4",
+      "decoded_frame_range_sha256": "d852c5db016be36f1446479001f7a075e42f7ac030ccbc2f0f208a2e8d680ff1",
+      "verification": {
+        "decoded_frames": 90,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 85,
+      "mean_stage_ms": {
+        "decode": 68.06820117721252,
+        "frame_setup": 0.016031764372361493,
+        "inference": 174.17058588197347,
+        "assessment_and_hash": 142.35586941187432,
+        "render": 90.18206588242559,
+        "encode_submission": 1.1898305881699986
+      },
+      "median_inference_ms": 104.75290000613313,
+      "inference_only_fps": 5.741497595223393,
+      "first_inference_ms": 274.09110000007786,
+      "detection_validation": {
+        "rejected_count": 0,
+        "frames_with_rejections": 0
+      },
+      "assessment_evidence_sha256": "50e8dbeac1d1221624bb901111a9e197701019e9bf07d55dbfb2c8e05bf65e9d",
+      "mean_assessment_detail_ms": {
+        "decoded_frame_sha256": 141.38722705932142,
+        "rules_and_tracking": 0.9686423525529202
+      }
+    },
+    {
+      "label": "cpu-dashboard-r2-efficient",
+      "device": "cpu",
+      "view": "dashboard",
+      "repeat": 2,
+      "run_directory": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r2-efficient\\20261115T143959Z-06dbb8e4",
+      "frames": 90,
+      "export_profile": "efficient",
+      "source_fps": 25.0,
+      "output_fps": 25.0,
+      "source_resolution": [
+        3840,
+        2160
+      ],
+      "model_load_seconds": 0.49464600000646897,
+      "pipeline_fps": 1.9914055803037116,
+      "job_seconds": 46.40111310000066,
+      "job_fps": 1.9396086427072958,
+      "source_seconds_processed": 3.6,
+      "h264_conversion_seconds": 0.0,
+      "preview_file": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r2-efficient\\20261115T143959Z-06dbb8e4\\dashboard.mp4",
+      "decoded_frame_range_sha256": "d852c5db016be36f1446479001f7a075e42f7ac030ccbc2f0f208a2e8d680ff1",
+      "verification": {
+        "decoded_frames": 90,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 85,
+      "mean_stage_ms": {
+        "decode": 72.35235058794976,
+        "frame_setup": 0.023560000152107987,
+        "inference": 163.12482941156142,
+        "assessment_and_hash": 150.75503529429517,
+        "render": 90.90328823521679,
+        "encode_submission": 1.7669988224310254
+      },
+      "median_inference_ms": 117.56640000385232,
+      "inference_only_fps": 6.130274609986046,
+      "first_inference_ms": 727.8157000109786,
+      "detection_validation": {
+        "rejected_count": 0,
+        "frames_with_rejections": 0
+      },
+      "assessment_evidence_sha256": "50e8dbeac1d1221624bb901111a9e197701019e9bf07d55dbfb2c8e05bf65e9d",
+      "mean_assessment_detail_ms": {
+        "decoded_frame_sha256": 149.85009647019015,
+        "rules_and_tracking": 0.9049388241050217
+      }
+    },
+    {
+      "label": "cpu-dashboard-r2",
+      "device": "cpu",
+      "view": "dashboard",
+      "repeat": 2,
+      "run_directory": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r2\\20261115T144046Z-09b919a8",
+      "frames": 90,
+      "export_profile": "standard",
+      "source_fps": 25.0,
+      "output_fps": 25.0,
+      "source_resolution": [
+        3840,
+        2160
+      ],
+      "model_load_seconds": 0.3947807000076864,
+      "pipeline_fps": 1.4218482057888444,
+      "job_seconds": 67.19859359999828,
+      "job_fps": 1.3393137442091096,
+      "source_seconds_processed": 3.6,
+      "h264_conversion_seconds": 2.624106400005985,
+      "preview_file": "outputs\\prioritized-performance\\final-cpu-export-comparison\\cpu-dashboard-r2\\20261115T144046Z-09b919a8\\preview.mp4",
+      "decoded_frame_range_sha256": "d852c5db016be36f1446479001f7a075e42f7ac030ccbc2f0f208a2e8d680ff1",
+      "verification": {
+        "decoded_frames": 90,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 85,
+      "mean_stage_ms": {
+        "decode": 53.57713999914909,
+        "frame_setup": 0.014707059873377575,
+        "inference": 168.69863411839643,
+        "assessment_and_hash": 146.42263058819535,
+        "render": 165.8674470585538,
+        "encode_submission": 154.09108588184395
+      },
+      "median_inference_ms": 122.87049999576993,
+      "inference_only_fps": 5.927730270170285,
+      "first_inference_ms": 716.6526000073645,
+      "detection_validation": {
+        "rejected_count": 0,
+        "frames_with_rejections": 0
+      },
+      "assessment_evidence_sha256": "50e8dbeac1d1221624bb901111a9e197701019e9bf07d55dbfb2c8e05bf65e9d",
+      "mean_assessment_detail_ms": {
+        "decoded_frame_sha256": 145.3671694113462,
+        "rules_and_tracking": 1.0554611768491347
+      }
+    }
+  ],
+  "scope": "Uploaded-file performance check, not accuracy evaluation. No frame skipping. Upload/download and readback verification excluded from job time. Job time includes model startup, all pipeline exports and optional H264 conversion. Inference-only FPS excludes decode, association, rendering and encoding. A Colab CPU/GPU comparison does not predict laptop speed.",
+  "evidence_matches_between_exports": true
+}

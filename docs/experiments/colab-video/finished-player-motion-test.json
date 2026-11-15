@@ -1,0 +1,30 @@
+{
+  "source": "D:\\ppe-compliance\\data\\samples\\my-test-video.mp4",
+  "export": "D:\\ppe-compliance\\outputs\\recorded-lag\\notebook-check\\runtime\\ppe-video-ready-results\\20261115T150530Z-e8360b3b\\benchmark-1c3868ef\\cpu-dashboard-r1-efficient\\20261115T150538Z-239d885b\\dashboard.mp4",
+  "source_fps": 25.0,
+  "output_fps": 25.0,
+  "source_alignment_offset_counts": {
+    "0": 270
+  },
+  "mean_same_frame_luma_error": 1.7184128456367325,
+  "mean_flow_vector_difference_pixels": 0.03142770607592226,
+  "motion_series_correlation": 0.9935595076636827,
+  "metrics": {
+    "source": {
+      "frames": 270,
+      "mean_absolute_luma_change": 2.852630557111575,
+      "p90_motion_pixels_per_frame_mean": 0.8407990245570923,
+      "p90_motion_pixels_per_frame_max": 3.7345786094665527,
+      "nearly_static_pairs_luma_below_0_1": 0
+    },
+    "export": {
+      "frames": 270,
+      "mean_absolute_luma_change": 2.906931669170443,
+      "p90_motion_pixels_per_frame_mean": 0.8460836431572428,
+      "p90_motion_pixels_per_frame_max": 3.7562873363494873,
+      "nearly_static_pairs_luma_below_0_1": 0
+    }
+  },
+  "elapsed_seconds": 56.97126130000106,
+  "scope": "Decoded visual motion comparison, excluding badges and dashboard chrome. This does not measure browser frame drops."
+}

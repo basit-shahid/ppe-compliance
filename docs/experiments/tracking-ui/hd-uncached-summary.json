@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "mode": "latest-frame",
+  "status": "stopped",
+  "stop_reason": "duration",
+  "error": null,
+  "run_directory": "outputs\\tracked-hd-preview\\20261114T130342Z-2a77fb63",
+  "source": "camera:0",
+  "image_size": 320,
+  "device": "cpu",
+  "confidence_threshold": 0.25,
+  "source_resolution": [
+    1280,
+    720
+  ],
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.13.3",
+  "packages": {
+    "ultralytics": "8.4.212",
+    "torch": "2.15.0",
+    "opencv-python": "4.14.0.94",
+    "numpy": "2.5.4"
+  },
+  "weights": "models/best.pt",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "camera": {
+    "backend": "dshow",
+    "controls": {},
+    "restore_warnings": [],
+    "resolution_request": {
+      "width": 1280,
+      "height": 720,
+      "accepted": true,
+      "driver_width": 1280.0,
+      "driver_height": 720.0
+    }
+  },
+  "tracking_enabled": true,
+  "tracking": {
+    "tracks_created": 0,
+    "active_tracks": 0,
+    "events": 0,
+    "confirmed_status_changes": 0,
+    "rules": {
+      "min_iou": 0.25,
+      "ambiguity_margin": 0.1,
+      "track_ttl_seconds": 1.2,
+      "max_observation_gap_seconds": 0.5,
+      "confirmation_observations": 3,
+      "confirmation_seconds": 0.2
+    }
+  },
+  "tracking_skipped_stale_results": 1,
+  "status_events_written": 0,
+  "preview_layout": "dashboard",
+  "preview_width": 1280,
+  "final_focus": "analyzed",
+  "recording_enabled": false,
+  "recorded_frames": 0,
+  "recording_playback_fps": null,
+  "recording_resolution": null,
+  "audio_preserved": false,
+  "captured_frames": 534,
+  "processed_frames": 40,
+  "captured_but_not_processed": 494,
+  "intentional_frame_skipping": true,
+  "total_wall_seconds": 20.1893104999981,
+  "inference_active_seconds": 11.905731799997739,
+  "assessment_throughput_fps": 3.359726279069011,
+  "preview_enabled": true,
+  "preview_ticks": 195,
+  "unique_live_frames_displayed": 195,
+  "distinct_recent_results_displayed": 39,
+  "preview_active_seconds": 19.97426919999998,
+  "live_preview_fps": 9.762559923844432,
+  "model_load_seconds": 8.274049299998296,
+  "stale_after_seconds": 0.5,
+  "application_result_latency_seconds": {
+    "mean": 0.31011522499966304,
+    "min": 0.09362010000040755,
+    "max": 6.5988141000016185,
+    "first": 6.5988141000016185,
+    "mean_after_first": 0.1488665358970488
+  },
+  "application_queue_wait_mean_seconds": 0.021448482499636157,
+  "worker_observations": {
+    "PPE detected": 0,
+    "potential violation": 0,
+    "review required": 0
+  },
+  "note": "Live pane has no AI boxes. Analyzed view uses its exact source frame; current decisions hide after the age limit. Age starts at application read, not sensor exposure; driver/network buffering is unmeasured. Frame skipping is intentional. Recording contains analyzed frames only. Optional track IDs are geometric session labels, not verified identities. Uncertainty is never held green; no automatic missing-PPE violations."
+}

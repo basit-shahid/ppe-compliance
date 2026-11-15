@@ -37,6 +37,30 @@ class AssociationTests(unittest.TestCase):
         self.assertEqual(worker["helmet"]["detection_id"], 1)
         self.assertEqual(worker["vest"]["detection_id"], 2)
 
+    def test_bottom_cropped_colab_vest_matches_with_score_but_requires_review(self):
+        data = report([
+            detection('person', [338.5469, 169.67, 2178.50146, 2160], .9143),
+            detection('helmet', [929.371, 218.2728, 1670.0706, 662.096], .9065),
+            detection('vest', [514.5458, 971.35895, 2104.1565, 2160], .8236)])
+        data.update(image_width=3840, image_height=2160, image_size=416)
+        worker = assess_detections(data, SOURCE)['workers'][0]
+        self.assertEqual(worker['vest']['state'], 'matched')
+        self.assertEqual(worker['vest']['confidence'], .8236)
+        self.assertEqual(worker['status'], 'review required')
+        self.assertTrue(any('border' in reason for reason in worker['reasons']))
+
+    def test_crop_exception_does_not_match_unclipped_held_or_bottom_strip_vests(self):
+        person = detection('person', [100, 40, 400, 640])
+        for box in ([150, 380, 350, 580], [150, 550, 350, 640], [20, 230, 180, 640]):
+            worker = assess([person, detection('vest', box)])['workers'][0]
+            self.assertEqual(worker['vest']['state'], 'not_detected')
+
+    def test_cropped_vest_ownership_remains_ambiguous_for_overlapping_workers(self):
+        result = assess([detection('person', [100, 40, 400, 640]),
+                         detection('person', [110, 40, 410, 640]),
+                         detection('vest', [150, 250, 350, 640])])
+        self.assertTrue(all(w['vest']['state'] == 'ambiguous' for w in result['workers']))
+
     def test_held_helmet_at_waist_does_not_satisfy_head(self):
         held = detection("helmet", [165, 400, 225, 450])
         result = assess([PERSON, held, VEST])

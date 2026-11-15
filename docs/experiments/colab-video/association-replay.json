@@ -1,0 +1,16 @@
+{
+  "frames_reassessed": 270,
+  "previous_vest_states": {
+    "not_detected": 546
+  },
+  "new_vest_states": {
+    "matched": 264,
+    "not_detected": 276,
+    "uncertain": 6
+  },
+  "new_worker_observations": {
+    "review required": 546
+  },
+  "frames_with_matched_vest": 264,
+  "scope": "Association-only replay of the uploaded Colab detections; no new inference or independent accuracy measurement."
+}

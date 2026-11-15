@@ -1,0 +1,15 @@
+{
+  "dataset_id": "replace-with-frozen-independent-test-version",
+  "independent": false,
+  "annotation_notes": "Replace with reviewer, collection provenance, annotation policy and scene split checks. Set independent=true only after review.",
+  "items": [
+    {
+      "image": "../data/evaluation/site-a/photo.jpg",
+      "sha256": "replace-with-SHA256-of-image-file",
+      "source_group": "site-a-day-1",
+      "workers": [
+        {"bbox_xyxy": [100, 60, 300, 560], "status": "PPE detected"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "unit_tests": 165,
+  "all_notebook_cells": 8,
+  "source_resolution": [
+    3840,
+    2160
+  ],
+  "processing_resolution": [
+    1920,
+    1080
+  ],
+  "frame_hash_scope": "resized_processing_bgr",
+  "source_coordinate_scale": [
+    2.0,
+    2.0
+  ],
+  "frames": 270,
+  "unique_output_thumbnails": 270,
+  "frame_indices_contiguous": true,
+  "playback_fps": 25,
+  "duration_seconds": 10.8,
+  "max_timestamp_error_seconds": 0.0,
+  "frame_types": {
+    "I": 6,
+    "P": 264
+  },
+  "keyframes": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250
+  ],
+  "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+  "encoder": {
+    "preset": "veryfast",
+    "crf": 18,
+    "threads": 2,
+    "pixel_format": "yuv420p",
+    "tune": "fastdecode",
+    "b_frames": 0,
+    "max_keyframe_interval_frames": 50
+  },
+  "pipeline_fps": 3.8719988538427033,
+  "job_fps": 3.8388716215262852,
+  "pipeline_sources_and_bundle_current": true,
+  "scope": "Real-model CPU test and independent cadence/readback check; no new CUDA performance measurement."
+}

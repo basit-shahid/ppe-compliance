@@ -7,7 +7,8 @@
 - Complete baseline: Phase 3 training, validation review and local PPE inference.
 - Implemented baseline: Phase 4 image association, conservative statuses and tests.
 - Implemented baseline: Phase 5 video/webcam, JSONL output, cleanup and short-run benchmarks.
-- Next: Phase 6 interface; then Phase 7 independent evaluation/submission.
+- Implemented: Phase 6 focused interface and camera monitor quality improvements.
+- Prepared: Phase 7 evaluation runner and submission outline; independent test data remains outstanding.
 
 See `project-status.md` for evidence and `PPE_Project_Comprehensive_Report.pdf`
 for phase details and suggested team roles. The allocations below are the
@@ -26,5 +27,6 @@ original relative schedule, not elapsed dates or a completion promise.
 - Days 25–28: report, setup instructions, slides, and backup demonstration.
 - Days 29–30: rehearsal and important fixes.
 
-Webcam is optional. Tracking, restricted zones, and dashboards are deferred.
+Webcam is optional. Session tracking and the native monitor are implemented;
+restricted zones remain deferred.
 Never tune against the final held-out test set.

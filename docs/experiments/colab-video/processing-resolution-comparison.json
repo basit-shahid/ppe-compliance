@@ -1,0 +1,482 @@
+{
+  "status": "completed",
+  "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "image_size": 416,
+  "frames_per_run": 60,
+  "repeats": 2,
+  "device": "cpu",
+  "runs": [
+    {
+      "label": "original-r1",
+      "height": null,
+      "repeat": 1,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\original-r1\\20261115T150007Z-b2b9588c",
+      "frames": 60,
+      "pipeline_fps": 1.8724617259925105,
+      "job_seconds": 40.69195639999816,
+      "job_fps": 1.474492880366959,
+      "processing_resolution": [
+        3840,
+        2160
+      ],
+      "hash_scope": "decoded_source_bgr",
+      "source_coordinate_scale": [
+        1.0,
+        1.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 67.92358000080144,
+        "frame_setup": 0.12199454570443116,
+        "inference": 127.30043090969875,
+        "assessment_and_hash": 139.139638181289,
+        "render": 90.00329090949063,
+        "encode_submission": 1.4526490905237468
+      },
+      "median_inference_ms": 103.33329999411944,
+      "inference_only_fps": 7.855432953792241,
+      "first_inference_ms": 5362.451599998167,
+      "mean_hash_ms": 137.8260236352534,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      }
+    },
+    {
+      "label": "1080-r1",
+      "height": 1080,
+      "repeat": 1,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\1080-r1\\20261115T150048Z-eab3ab27",
+      "frames": 60,
+      "pipeline_fps": 3.01535127395008,
+      "job_seconds": 20.37269180000294,
+      "job_fps": 2.94511891648954,
+      "processing_resolution": [
+        1920,
+        1080
+      ],
+      "hash_scope": "resized_processing_bgr",
+      "source_coordinate_scale": [
+        2.0,
+        2.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 64.36528727274641,
+        "frame_setup": 29.647896365283735,
+        "inference": 143.05446909036783,
+        "assessment_and_hash": 34.258938182558104,
+        "render": 49.80828909028787,
+        "encode_submission": 1.6020818179557947
+      },
+      "median_inference_ms": 103.12330001033843,
+      "inference_only_fps": 6.99034435176085,
+      "first_inference_ms": 303.98750001040753,
+      "mean_hash_ms": 33.56407090878665,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      },
+      "agreement_with_original": {
+        "detections": {
+          "person": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9952673039915277,
+            "mean_absolute_confidence_change": 0.0021246845523516336
+          },
+          "helmet": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.99674566479549,
+            "mean_absolute_confidence_change": 0.0005328779419263204
+          },
+          "vest": {
+            "matched": 60,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9959925856636558,
+            "mean_absolute_confidence_change": 0.005620230237642924
+          }
+        },
+        "paired_worker_observations": 120,
+        "changed_worker_status_or_equipment_states": 0,
+        "scope": "Original-resolution inference is a reference, not ground truth."
+      }
+    },
+    {
+      "label": "720-r1",
+      "height": 720,
+      "repeat": 1,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\720-r1\\20261115T150108Z-3dc61d57",
+      "frames": 60,
+      "pipeline_fps": 3.184288280071925,
+      "job_seconds": 19.32878399999754,
+      "job_fps": 3.1041787212277625,
+      "processing_resolution": [
+        1280,
+        720
+      ],
+      "hash_scope": "resized_processing_bgr",
+      "source_coordinate_scale": [
+        3.0,
+        3.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 53.449929090724744,
+        "frame_setup": 55.393438183025204,
+        "inference": 106.04982363504611,
+        "assessment_and_hash": 14.649641819414683,
+        "render": 48.35786545352841,
+        "encode_submission": 0.9266163637882776
+      },
+      "median_inference_ms": 83.2654999976512,
+      "inference_only_fps": 9.429530061656148,
+      "first_inference_ms": 362.514899999951,
+      "mean_hash_ms": 14.016301819885319,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      },
+      "agreement_with_original": {
+        "detections": {
+          "person": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9919276861627809,
+            "mean_absolute_confidence_change": 0.0034945264458656313
+          },
+          "helmet": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9934618352461485,
+            "mean_absolute_confidence_change": 0.001052739719549815
+          },
+          "vest": {
+            "matched": 60,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9909925368648583,
+            "mean_absolute_confidence_change": 0.013249064485232035
+          }
+        },
+        "paired_worker_observations": 120,
+        "changed_worker_status_or_equipment_states": 0,
+        "scope": "Original-resolution inference is a reference, not ground truth."
+      }
+    },
+    {
+      "label": "720-r2",
+      "height": 720,
+      "repeat": 2,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\720-r2\\20261115T150128Z-76d8acf2",
+      "frames": 60,
+      "pipeline_fps": 2.5534806520294886,
+      "job_seconds": 23.99775039999804,
+      "job_fps": 2.500234355300441,
+      "processing_resolution": [
+        1280,
+        720
+      ],
+      "hash_scope": "resized_processing_bgr",
+      "source_coordinate_scale": [
+        3.0,
+        3.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 88.03518727310637,
+        "frame_setup": 65.67781090958637,
+        "inference": 162.21212363584942,
+        "assessment_and_hash": 16.55628909092312,
+        "render": 54.85351636307314,
+        "encode_submission": 2.2521545459643346
+      },
+      "median_inference_ms": 112.56619999767281,
+      "inference_only_fps": 6.1647673280260085,
+      "first_inference_ms": 342.0112000021618,
+      "mean_hash_ms": 15.856496363730086,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      },
+      "agreement_with_original": {
+        "detections": {
+          "person": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9919276861627809,
+            "mean_absolute_confidence_change": 0.0034945264458656313
+          },
+          "helmet": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9934618352461485,
+            "mean_absolute_confidence_change": 0.001052739719549815
+          },
+          "vest": {
+            "matched": 60,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9909925368648583,
+            "mean_absolute_confidence_change": 0.013249064485232035
+          }
+        },
+        "paired_worker_observations": 120,
+        "changed_worker_status_or_equipment_states": 0,
+        "scope": "Original-resolution inference is a reference, not ground truth."
+      }
+    },
+    {
+      "label": "1080-r2",
+      "height": 1080,
+      "repeat": 2,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\1080-r2\\20261115T150153Z-ad067b1a",
+      "frames": 60,
+      "pipeline_fps": 2.783671506274105,
+      "job_seconds": 22.178727899998194,
+      "job_fps": 2.7052949236103343,
+      "processing_resolution": [
+        1920,
+        1080
+      ],
+      "hash_scope": "resized_processing_bgr",
+      "source_coordinate_scale": [
+        2.0,
+        2.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 51.57084727384658,
+        "frame_setup": 26.32087636130481,
+        "inference": 136.66631272829943,
+        "assessment_and_hash": 33.86632727236825,
+        "render": 47.47589818249583,
+        "encode_submission": 1.0908818174026567
+      },
+      "median_inference_ms": 97.38900000229478,
+      "inference_only_fps": 7.317092120485157,
+      "first_inference_ms": 1727.9844000004232,
+      "mean_hash_ms": 33.16792181814725,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      },
+      "agreement_with_original": {
+        "detections": {
+          "person": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9952673039915277,
+            "mean_absolute_confidence_change": 0.0021246845523516336
+          },
+          "helmet": {
+            "matched": 120,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.99674566479549,
+            "mean_absolute_confidence_change": 0.0005328779419263204
+          },
+          "vest": {
+            "matched": 60,
+            "reference_only": 0,
+            "candidate_only": 0,
+            "mean_normalized_iou": 0.9959925856636558,
+            "mean_absolute_confidence_change": 0.005620230237642924
+          }
+        },
+        "paired_worker_observations": 120,
+        "changed_worker_status_or_equipment_states": 0,
+        "scope": "Original-resolution inference is a reference, not ground truth."
+      }
+    },
+    {
+      "label": "original-r2",
+      "height": null,
+      "repeat": 2,
+      "run_directory": "outputs\\recorded-lag\\processing-comparison\\original-r2\\20261115T150215Z-c9ec59a8",
+      "frames": 60,
+      "pipeline_fps": 2.456190224466877,
+      "job_seconds": 24.68957170000067,
+      "job_fps": 2.4301758138638903,
+      "processing_resolution": [
+        3840,
+        2160
+      ],
+      "hash_scope": "decoded_source_bgr",
+      "source_coordinate_scale": [
+        1.0,
+        1.0
+      ],
+      "verification": {
+        "decoded_frames": 60,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "worker_observations": {
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 120
+      },
+      "warmup_frames_excluded": 5,
+      "steady_frames": 55,
+      "mean_stage_ms": {
+        "decode": 57.0726454541066,
+        "frame_setup": 0.7550236364212733,
+        "inference": 124.35563272738364,
+        "assessment_and_hash": 136.66581636432304,
+        "render": 82.60855999833439,
+        "encode_submission": 1.080496365532533
+      },
+      "median_inference_ms": 87.61629999207798,
+      "inference_only_fps": 8.041453194100438,
+      "first_inference_ms": 204.67799999460112,
+      "mean_hash_ms": 135.9275000011125,
+      "raw_detections": {
+        "person": 120,
+        "helmet": 120,
+        "vest": 60
+      },
+      "equipment_states": {
+        "helmet:matched": 120,
+        "vest:matched": 60,
+        "vest:not_detected": 60
+      }
+    }
+  ],
+  "scope": "Same-host working-resolution comparison, not independent accuracy. All source frames retained; each pixel hash binds its own processing resolution.",
+  "pipeline_source_sha256": {
+    "association.py": "85b980a81c83a7e76fbfae1b8d117c992db1a395754e16ee2899ac18f30aa77f",
+    "benchmark.py": "ba7d45f48f959b38438f5fa3f4c649d2817b9f0848319d7acea4fecac2d5fdd2",
+    "cli.py": "27e485b305885442ab348e645ade557df2e05e3b2a72dd346de82cffebee9509",
+    "colab_setup.py": "ca39456ffd1aebe5024425070d8649aaaaa0a5e19cc5db05748148252b907aa0",
+    "compliance.py": "ef1082d97bf137752ca70a023519a4ea8b4bd5d447cb9812f2746c476ae0b4fb",
+    "detector.py": "78f7fa2e340ce2038cde043a593b69c541313b6318d208873bf9e34d15cb36dc",
+    "evaluation.py": "a22cd4445740d854ba4209623407e1fd649c004d82cfcb8667f2bfb35ac22f9d",
+    "interface.py": "479fae390213c9e44614d21b21030aeb13f5e23cc553e6d065167f9913914dce",
+    "live_pipeline.py": "a5095c05e25e23d3264befa4aff5d7af45e05744306320215532e2f8ae41a1bd",
+    "preview_ui.py": "7a5c32e86ee243837a0ff8d493f68894fd8836eb03485c8b2e41447d9c50f9e3",
+    "rendering.py": "7d4cde9ef2df1e0efdaf74cd223828448849037049b67efebe1b196ede418d98",
+    "tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208",
+    "video_export.py": "2cd1c66acf92f5d91a3134765910f912925bc9f13b109af67fbb3950609ab2b0",
+    "video_pipeline.py": "e1f321603256f8589b2ff3dc33eac7fa24192eaefb50077705d2bb5d5d08b031",
+    "__init__.py": "ed47748a63cc15e6b932ec14a265c17c0876b4159ec53cf25d5abd47f56bacd8"
+  },
+  "pooled_job_fps": {
+    "original": 1.8353807793611685,
+    "1080": 2.8201174213700044,
+    "720": 2.769665325459593
+  }
+}

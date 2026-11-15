@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "device": "cpu",
+  "cuda_emulated": false,
+  "source": "D:\\ppe-compliance\\data\\samples\\my-test-video.mp4",
+  "frozen_video": "D:\\ppe-compliance\\outputs\\recorded-lag\\notebook-check\\runtime\\source.mp4",
+  "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+  "configuration": {
+    "PREFERRED_DEVICE": "cpu",
+    "INSTALL_DEPENDENCIES": false,
+    "PROCESSING_HEIGHT": 1080,
+    "MAX_FRAMES": 300,
+    "REPEATS": 1,
+    "COMPARE_CPU": false,
+    "COMPARE_VIEWS": false,
+    "MAKE_BROWSER_PREVIEW": true,
+    "RUN_FULL_VIDEO": false,
+    "WEIGHTS_PATH": "\"\"",
+    "VIDEO_PATH": "\"\""
+  },
+  "elapsed_seconds": 94.84713529999135,
+  "executed_code_cells": 8,
+  "first_error": null,
+  "executed_notebook": "D:\\ppe-compliance\\outputs\\recorded-lag\\notebook-check\\executed.ipynb",
+  "benchmark_status": "completed",
+  "exports": [
+    {
+      "frames": 270,
+      "device": "cpu",
+      "readback": {
+        "decoded_frames": 270,
+        "resolution": [
+          1280,
+          720
+        ],
+        "playback_fps": 25.0
+      },
+      "detection_validation": {
+        "rejected_count": 0,
+        "frames_with_rejections": 0
+      }
+    }
+  ]
+}

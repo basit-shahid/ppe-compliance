@@ -5,7 +5,7 @@ helmets and high-visibility safety clothing. Development follows seven phases
 covering data, training, worker-level PPE checks, video and final evaluation.
 
 **Current milestone:** PPE training, image assessment, recorded video and local
-webcam processing are implemented. The demonstration interface is next. Geometry
+webcam processing and the focused image/video/camera interface are implemented. Independent final evaluation is pending test data. Geometry
 matches and model detections do not establish wearing state or workplace safety.
 
 [Comprehensive report (PDF)](docs/PPE_Project_Comprehensive_Report.pdf) ·
@@ -30,6 +30,36 @@ statuses are conservative heuristics; detecting a helmet does not prove it is wo
 
 *Validation image with local predictions: integration evidence, not an independent
 accuracy result. [Attribution and changes](docs/dataset-attribution.md).*
+
+## Open the interface
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[ui]"
+.\.venv\Scripts\python.exe -m streamlit run app/streamlit_app.py
+```
+
+Open http://127.0.0.1:8501. Upload an image or video, choose Balanced/Detail/Fast,
+and analyze. The workspace uses compact corner markers, expandable worker evidence,
+lossless image exports and browser-compatible video previews. Video defaults to a
+300-frame preview; choose 0 for a full export. Recorded playback defaults to the
+same monitor dashboard as the live camera, with synchronized worker cards and
+person/helmet/vest confidence scores on frames. Video options offers a frame-only
+view, and Advanced settings can hide scores or show equipment boxes.
+Live camera mode opens the native
+monitor with a large video and small evidence sidebar. Tab switches focus,
+F toggles full screen, and Q/Esc stops.
+
+For smoother HD capture from the terminal:
+
+```powershell
+.\.venv\Scripts\ppe.exe webcam --camera 0 --low-latency --track --image-size 416 --capture-width 1280 --capture-height 720 --capture-fps 30
+```
+
+Camera settings require driver support. Display FPS and AI assessment rate are
+measured separately; increasing playback FPS does not add camera frames or improve
+AI speed. Source detail also depends on focus, lighting and upstream compression.
+See [interface and quality guide](docs/phase-6.md) and
+[final evaluation workflow](docs/phase-7.md).
 
 ## Baseline results
 
@@ -128,7 +158,7 @@ for `assess` are `models/best.pt`. General pretrained weights are rejected.
   region, with no other warning. It is not proof of absence.
 
 Missing equipment detections **default to review**, not automatic violations.
-Worker IDs are frame-local, not persistent tracking identities. Read the
+Image worker IDs are frame-local; optional video `--track` adds session IDs. Read the
 [Phase 4 guide](docs/phase-4.md) for manual visibility review, rules and limitations.
 
 ## Recorded video and webcam
@@ -142,10 +172,36 @@ Webcam preview opens by default. Stop with **Q**, **Esc**, window close or **Ctr
 For a bounded headless camera check, add `--no-preview --max-frames 30`.
 Recorded videos run without a window unless `--preview` is supplied.
 
+### Local tracking and camera dashboard
+
+Add `--track --focus analyzed` to the low-latency command below for stable session
+IDs, one worker badge, confirmed status-change events and the new dashboard.
+Tab swaps pane focus. Optional `--capture-width 1280 --capture-height 720` requests
+native HD; this costs processing speed. A short HD check measured 19.2 display
+updates/s and 4.8 AI assessments/s. See [tracking/UI guide](docs/tracking-ui.md).
+These enhancements remain local and unpublished.
+
+### Local low-latency preview enhancement
+
+```powershell
+.\.venv\Scripts\ppe.exe webcam --camera 0 --low-latency --image-size 320 --device cpu
+```
+
+This local update uses newest-frame capture and separate live/analyzed panes.
+The live pane has no old AI boxes; the analyzed pane shows its exact source frame
+and age, and hides stale results. Recording is off unless `--record` is supplied.
+`--duration 20` requests a bounded check. See the recorded evidence in the live-performance guide.
+
+A final 20-second local check measured about **25.9 live display updates/s** and
+**8.8 AI assessments/s**, with about **92 ms mean application receive-to-result age
+after the first prediction**. This is a short run at input size 320, not 26 FPS
+inference or a guarantee of sensor-to-display latency/accuracy. See the
+[live-performance guide](docs/live-performance.md).
+
 Each run saves `annotated.mp4`, `frames.jsonl` and `summary.json`. Output is silent;
 webcam recordings use constant 10 FPS playback by default, which can differ from
 actual capture/processing time. `--output-fps` controls playback, not processing.
-IDs/status counts are per frame, not persistent tracking or unique-worker counts.
+Without `--track`, IDs are frame-local. Status counts are repeated observations, not unique-worker counts.
 Missing PPE still defaults to review; manual visibility is not propagated over video.
 
 Local checks: two runs of a 30-frame synthetic validation-still sequence at
@@ -161,11 +217,18 @@ baseline detected four people and one bus.
 
 ## Live-performance limitations
 
-The current stream loop reads, predicts, assesses, draws, records and displays
-sequentially. Slow inference or camera buffering can make the preview lag. A lower
-`--image-size` can improve speed at the cost of small-equipment recall. Latest-frame
-capture, decoupled display and optional recording are proposed optimizations, not
-implemented features. Current results do not guarantee smooth 25-30 FPS inference.
+For uploaded-video GPU testing, use the ready-to-run
+[rebuilt Colab video notebook](notebooks/PPE_Video_GPU_Ready.ipynb) and its
+[setup guide](docs/colab-video-testing.md). It uses the existing trained weights,
+compares CPU and GPU on the same clip and supports full-video dashboard export.
+It reports inference speed separately from rendering, encoding and whole-job time.
+
+The default stream loop remains sequential. The optional local `--low-latency`
+mode reduces application queueing by intentionally skipping unselected camera
+frames, separates display from inference and makes recording optional. Driver or
+phone buffering remains outside these controls. Lower `--image-size` can improve
+speed at the cost of small-equipment recall. Smooth live display does not imply
+25-30 FPS inference or perfectly synchronized results.
 
 ## Dataset preparation
 
@@ -226,13 +289,12 @@ laptop setup-verification command.
 | 3 | PPE training and validation analysis | Baseline complete; local model verified |
 | 4 | Worker/PPE association and image statuses | Image baseline implemented and checked |
 | 5 | Recorded video, speed measurement and webcam integration | Baseline checked; short CPU/camera measurements recorded |
-| 6 | Optional Streamlit demonstration interface | Next |
-| 7 | Independent evaluation, report and presentation | Planned |
+| 6 | Streamlit image/video interface and native camera monitor | Implemented and checked |
+| 7 | Independent evaluation, report and presentation | Runner and submission outline ready; independent data pending |
 
 Assessment statuses: **PPE detected**, **potential violation**, **review required**.
-Missing detections alone do not prove missing equipment. Tracking, restricted zones,
-operational violation logging and dashboards remain future extensions.
-The Streamlit app is currently a placeholder.
+Missing detections alone do not prove missing equipment. Session tracking and a native
+monitor are available. Restricted zones remain outside the current scope.
 
 See the [phase plan](docs/plan.md) and [project report](docs/PPE_Project_Comprehensive_Report.pdf)
 for acceptance gates, implementation details and suggested three-member roles.
@@ -246,7 +308,7 @@ ppe-compliance/
 |-- configs/              # Shared examples and reviewed exclusions; local YAML ignored
 |-- scripts/              # Data preparation, Colab packaging and PDF generation
 |-- notebooks/            # Colab training notebook
-|-- app/                  # Planned Streamlit interface
+|-- app/                  # Local Streamlit image/video/camera interface
 |-- docs/                 # Guides, report, audit, plan and compact experiment evidence
 |   |-- assets/           # Reviewed documentation figures
 |   `-- experiments/      # Recorded metrics, configuration and provenance
@@ -260,12 +322,65 @@ ppe-compliance/
 
 ## Verification and evaluation
 
+The app defaults to **Smooth live review** for recorded video. It opens a desktop
+window: the main pane plays original motion while a background worker scores
+selected frames in a separate, timestamped pane. Start it from the terminal with:
+
+```powershell
+.\.venv\Scripts\ppe.exe video --source "data/samples/my-test-video.mp4" --weights models/best.pt --image-size 416 --device cpu --track --live-preview
+```
+
+The preview defaults to 540p and at most 2.5 AI updates per second to leave CPU
+capacity for playback. `--analysis-fps` changes that limit; `--processing-height`
+changes the working resolution. Model warm-up happens before playback. Large
+inputs also need a cached resized playback copy, prepared alongside warm-up;
+this is media preparation, not an AI scan of every frame. Subsequent reviews
+reuse the copy. Q/Esc closes the window; Tab swaps the large pane. Reports contain
+selected-frame evidence, not full-video compliance coverage. No interpolation or
+AI boxes are added to the moving source pane. The review window has no audio.
+Local tests delivered all 270 source frames in order at roughly 23–25 source
+submissions/s while AI analyzed 27–28 samples. This is not a constant-FPS or
+independent accuracy guarantee. See [review verification](docs/recorded-live-review.md).
+
+Choose **Analyze every frame** in the app for full-coverage processing and scored
+movie export. This mode offers **Balanced · 1080p**, **Lower resolution · 720p**, and **Original
+resolution** analysis. Balanced is its default. Every source frame and its
+nominal FPS are retained; smaller processing frames reduce hashing and drawing
+work, while original resolution can retain more small PPE detail. The original
+upload is unchanged. Reports identify the analysis pixel dimensions, pixel-hash
+scope and coordinate scales back to the original source.
+
+Full analysis produces one H.264 file, tuned for easier decoding with no B frames and
+at most two seconds between keyframes: 720p dashboard or video up to 1080p.
+Enable **Keep a native resolution export** to save the full-size annotated copy.
+CLI users can select `--export-profile efficient --processing-height 1080`;
+Python/CLI defaults retain original-resolution analysis and standard export.
+
+For terminal review, add **`--play`** to play the completed video at its encoded
+frame rate after processing. Q/Esc closes the player. `--preview` instead shows
+frames as inference finishes, so its motion follows processing speed. The two
+options are mutually exclusive. Example:
+
+```powershell
+.\.venv\Scripts\python.exe -m ppe_compliance.cli video --source data/samples/my-test-video.mp4 --image-size 416 --processing-height 1080 --export-profile efficient --track --play
+```
+
+The app's **Check playback smoothness** panel measures browser delivery rate,
+dropped frames, buffering and player visibility. These measure finished playback,
+separately from model processing speed. The original 25 FPS motion is preserved;
+no generated intermediate frames are applied to analysis or normal exports.
+See [Colab comparison instructions](docs/colab-video-testing.md) to measure both
+exports on the same GPU, including complete-job timing and evidence equality.
+
 Verified: CLI help/version, `pip check`, general/PPE CPU inference, readable output
 images and valid JSON boxes, invalid inputs, dataset loader, preparation fixtures,
 notebook syntax/resume branches, and PDF structure/layout. Phase 4 adds 35 rule/CLI
 tests and four real-model CPU integration checks on development examples. Phase 5
-extends the suite to 59 tests, verifies video output readback, and checks camera
+extends the published suite to 59 tests, verifies video output readback, and checks camera
 capture/preview. These do not measure independent compliance accuracy.
+The local suite includes camera compatibility, low-latency handoff, stale-result,
+recording, shutdown, compact overlay, evaluation and optional interface interaction checks.
+See [current quality evidence](docs/experiments/quality-ui/verification.json).
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v

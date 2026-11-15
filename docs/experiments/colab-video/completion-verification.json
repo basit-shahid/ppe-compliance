@@ -1,0 +1,130 @@
+{
+  "status": "passed",
+  "unit_tests": 180,
+  "native_summary": {
+    "schema_version": 1,
+    "mode": "recorded-live-preview",
+    "status": "completed",
+    "stop_reason": "end_of_video",
+    "error": null,
+    "run_directory": "outputs\\recorded-live-final\\20261115T174151Z-1ccd3a2a",
+    "source": "D:\\ppe-compliance\\data\\samples\\my-test-video.mp4",
+    "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+    "source_fps_metadata": 25.0,
+    "source_frame_count_metadata": 270,
+    "source_resolution": [
+      3840,
+      2160
+    ],
+    "processing_resolution": [
+      960,
+      540
+    ],
+    "processing_height_limit": 540,
+    "image_size": 416,
+    "source_coordinate_scale": [
+      4.0,
+      4.0
+    ],
+    "frame_hash_scope": "streamed_processing_bgr",
+    "analysis_fps_limit": 2.5,
+    "playback_source": "outputs\\recorded-live-final\\.playback-cache\\de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380-960x540-v1.mp4",
+    "playback_source_preparation": {
+      "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+      "sha256": "e11b4ad01821841a3cf932dedff1654c41b38b0301910a7bc35e387c648fe660",
+      "resolution": [
+        960,
+        540
+      ],
+      "fps": 25.0,
+      "frames": 270,
+      "cached": true
+    },
+    "preparation_seconds": 0.2807542999944417,
+    "weights": "models/best.pt",
+    "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+    "device": "cpu",
+    "source_frames_played": 270,
+    "processed_frames": 27,
+    "source_frames_not_analyzed": 243,
+    "intentional_analysis_sampling": true,
+    "intentional_source_frame_skipping": false,
+    "interpolation": false,
+    "playback_seconds": 11.111366800003452,
+    "source_submission_fps": 24.299440821260273,
+    "playback_pacing_resets": 4,
+    "mean_playback_stage_ms": {
+      "read": 1.6467418514636207,
+      "wait": 15.012190000292051,
+      "render": 18.155038148149657,
+      "gui_poll": 7.813996666529285
+    },
+    "warmup_seconds": 15.188010300000315,
+    "inference_cpu_threads": 1,
+    "total_wall_seconds": 27.459059400003753,
+    "worker_observations": {
+      "PPE detected": 0,
+      "potential violation": 0,
+      "review required": 54
+    },
+    "detection_validation": {
+      "rejected_count": 0
+    },
+    "analysis_latency_seconds": {
+      "mean": 0.24547473333465555,
+      "max": 0.38020899999537505
+    },
+    "note": "Every source frame is submitted in order at nominal source FPS when decoding/rendering keep up. Large inputs use a cached resized playback copy prepared alongside AI warm-up; original files remain unchanged. AI consumes selected latest frames only. The separate scored pane retains its exact frame/time; no AI boxes are drawn on moving source video. JSONL is sampled evidence, not an all-frame report. No scored movie export or audio playback. Source timestamps use nominal FPS, not variable-rate PTS."
+  },
+  "sample_hashes_and_scores_verified": 27,
+  "processed_source_frame_indices": [
+    0,
+    8,
+    14,
+    24,
+    35,
+    43,
+    52,
+    62,
+    72,
+    83,
+    93,
+    103,
+    114,
+    123,
+    134,
+    144,
+    154,
+    164,
+    174,
+    184,
+    194,
+    204,
+    215,
+    225,
+    235,
+    245,
+    255
+  ],
+  "source_copy_frames_verified": 270,
+  "source_files_sha256": {
+    "association.py": "4d48c1ab2b77d8422a2ca95e218c79422e2914b20dde1951256c60c1ade27435",
+    "benchmark.py": "ba7d45f48f959b38438f5fa3f4c649d2817b9f0848319d7acea4fecac2d5fdd2",
+    "cli.py": "96866cd81aa507daec6cc06885c558640a5860017543cbe784bfc9f7bbcfa3c0",
+    "colab_setup.py": "ca39456ffd1aebe5024425070d8649aaaaa0a5e19cc5db05748148252b907aa0",
+    "compliance.py": "3e5a1f5866c01cb73d92bc0c8d8650a3cf142049c5f60c7cdede29d6ab9a3ed2",
+    "detector.py": "3fb723bbd73527762a4a2423ea1e2ecb9b98a1872aed4e4c3cc79585a3602b23",
+    "evaluation.py": "a22cd4445740d854ba4209623407e1fd649c004d82cfcb8667f2bfb35ac22f9d",
+    "interface.py": "dad10c3da7867e023eae184027c3075fe9e200b945ceb3402b172aca505283e1",
+    "live_pipeline.py": "a5095c05e25e23d3264befa4aff5d7af45e05744306320215532e2f8ae41a1bd",
+    "playback.py": "71c159a116fde8abd12990b858820ce71bd0254aa85954839c3833b9ed426d78",
+    "preview_ui.py": "18a880974b6dcef5eb48b97c2c69b0137d0f6c65a8ccff8d07ce7f3e990a606e",
+    "recorded_preview.py": "fb118fa54f9592c8aa3358d569aa584263517e6e39afa1d80b12024412644731",
+    "rendering.py": "a41329aa1083a34b8e599c036a8ff66e0b0f8abeacd60fbe6986b4edd7f930fc",
+    "tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208",
+    "video_export.py": "2cd1c66acf92f5d91a3134765910f912925bc9f13b109af67fbb3950609ab2b0",
+    "video_pipeline.py": "ca08d552ec0ea916d2320409913b187b6788de846e95afd00adc4d404bae6b6f",
+    "__init__.py": "c0d1235ff695a3beff1275458b80c2c6d0c01f1639f61f5fe875b5222515a80f"
+  },
+  "scope": "Current-source native submission timing and exact sampled pixel/score checks. Not an OS compositor or independent accuracy measurement."
+}

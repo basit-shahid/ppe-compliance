@@ -82,6 +82,7 @@ def assess_detections(report, source_sha256, rules=None, visibility=None):
             "worker_id_scope": "frame-local, ordered by person bounding box; not tracking IDs",
             "detection_id_scope": "zero-based index into companion detections.json detections list",
             "workers": workers, "unmatched_equipment": unmatched,
+            "detection_validation": report.get("detection_validation"),
             "summary": {"workers": len(workers), **{status: counts[status] for status in
                         ("PPE detected", "potential violation", "review required")}},
             "note": "Heuristic visible-PPE assessment, not a safety guarantee. Missing detections do not prove absence. No detected workers does not establish an empty or safe scene."}

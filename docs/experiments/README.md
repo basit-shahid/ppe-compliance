@@ -22,3 +22,25 @@ independent worker-level evaluation. See [Phase 4](../phase-4.md).
 two bounded camera checks, fixture provenance, and verification metadata. Camera
 media remains ignored/local. Rates describe short runs with cold-start effects,
 not sustained deployment speed. See [Phase 5](../phase-5.md).
+
+`live-performance/` contains local short-run preview and optional recording
+summaries, plus readback verification. Preview-update rate, assessment rate and
+application result age are distinct metrics; these are not independent PPE
+accuracy or a controlled A/B performance benchmark. Camera media stays local.
+
+`tracking-ui/` contains local tracked-video readback and short HD dashboard checks.
+No natural-motion accuracy or sustained performance claim is made.
+
+- [Interface and quality verification](quality-ui/verification.json): UI interactions, real-model exports, browser H.264 playback, renderer microbenchmark and unavailable camera check (2026-11-15).
+
+- [Colab video preparation](colab-video/verification.json): verified current source/model bundle, generated notebook, CPU exports and timing checks. Colab GPU execution remains pending.
+
+- [Uploaded T4 result review](colab-video/gpu-results-review.md): 51.6 FPS detector calls versus 3.69 FPS complete processing; hash/render/export bottlenecks and cropped-worker vest association findings.
+
+- [Prioritized video improvements](colab-video/prioritized-improvements.md): single H.264 export, display-sized drawing, unchanged source evidence and targeted cropped-worker association fixes, with a same-device comparison workflow.
+
+- [Recorded-video lag follow-up](colab-video/recorded-video-lag.md): 1080p analysis mode, easier H.264 decoding/seeking, resolution comparison and verified 270-frame playback cadence.
+
+- [Finished-player motion investigation](colab-video/finished-player-motion.md): source/export optical-flow alignment, actual visible-browser delivery tests, in-app frame counters and paced terminal review.
+
+- [Recorded live review](../recorded-live-review.md): native source-paced playback with selected-frame AI; full 270-frame ordering, unmodified source-pane pixels and sample-hash verification.

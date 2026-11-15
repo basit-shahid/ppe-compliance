@@ -49,3 +49,24 @@ Inputs are `docs/project-report.md` and reviewed figures in `docs/assets/`.
 Output is `docs/PPE_Project_Comprehensive_Report.pdf`. The build embeds Segoe UI
 when available and otherwise uses standard PDF fonts. Report tooling is separate
 from runtime application dependencies.
+
+## Final worker evaluation
+
+`evaluate_workers.py` runs the reviewed frozen manifest with exact duplicate and
+training/validation overlap checks. It exports worker precision/recall/F1,
+missed/spurious counts, review rate and status confusion. See
+[Phase 7](../docs/phase-7.md) and `configs/evaluation.example.json`. Independent
+evaluation images/labels must be supplied; development integration fixtures do
+not establish final accuracy.
+
+## Colab video GPU test
+
+`build_video_colab.py` builds `notebooks/PPE_Video_GPU_Ready.ipynb` and
+`outputs/colab-video/ppe-video-gpu-bundle.zip` from the current local pipeline
+and `models/best.pt`. The notebook compares CPU/GPU inference and complete video
+export rates on the same clip; see [video testing guide](../docs/colab-video-testing.md).
+
+`check_video_notebook.py` executes the generated notebook in an actual local CPU
+Jupyter kernel using real weights and video. It saves the executed notebook and
+a first-error report; install `.[notebook]` first. Use `--quoted-empty-paths` to
+exercise the Colab cell 3 form-input regression.

@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-15",
+  "archive": "ppe-video-gpu-results-20261115T124202Z-f2242e67.zip",
+  "archive_sha256": "481f5301e667588f89f56d46298380580832ccc4e27a1d11beefdeb66d3fd390",
+  "benchmark": {
+    "schema_version": 1,
+    "status": "completed",
+    "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+    "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+    "image_size": 416,
+    "confidence": 0.25,
+    "max_frames": 300,
+    "repeats": 1,
+    "warmup_frames": 5,
+    "tracking": true,
+    "show_scores": true,
+    "equipment_detail": false,
+    "browser_preview_enabled": true,
+    "pipeline_source_sha256": {
+      "detector.py": "78f7fa2e340ce2038cde043a593b69c541313b6318d208873bf9e34d15cb36dc",
+      "association.py": "0fac3d16e14eb57573394b3495c3ae52638cc1c2459b6d992d1f0fdc9558d5a8",
+      "compliance.py": "ef1082d97bf137752ca70a023519a4ea8b4bd5d447cb9812f2746c476ae0b4fb",
+      "video_pipeline.py": "fdb017ea7e32a30be6516ce1ce6fc724897d3ab6d90eb29911d00d29e19a58db",
+      "rendering.py": "c6bdadc7638409f53ea7681a7bb6d365553f3ca10211d67c6308f7618fc38c0e",
+      "preview_ui.py": "640fa2455f932109e541cc46b44fced1a6f46005a77a18abc3a6551e4c637730",
+      "tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208",
+      "benchmark.py": "2f3681891fbc116fa80ef465cdcf4572e95f19f8cb3fb73e56e5e71f2021226d"
+    },
+    "environment": {
+      "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+      "python": "3.13.16",
+      "torch": "2.14.1+cu130",
+      "cuda_runtime": "13.0",
+      "gpu": "Tesla T4",
+      "torch_cpu_threads": 1
+    },
+    "runs": [
+      {
+        "label": "gpu-dashboard-r1",
+        "device": "0",
+        "view": "dashboard",
+        "repeat": 1,
+        "run_directory": "/content/ppe-video-ready-results/20261115T124202Z-f2242e67/benchmark-61022d2c/gpu-dashboard-r1/20261115T124548Z-97c520f1",
+        "frames": 270,
+        "source_fps": 25.0,
+        "output_fps": 25.0,
+        "source_resolution": [
+          3840,
+          2160
+        ],
+        "model_load_seconds": 0.11067314299998543,
+        "pipeline_fps": 3.688645580208143,
+        "job_seconds": 86.3795449019999,
+        "job_fps": 3.125740015258506,
+        "source_seconds_processed": 10.8,
+        "h264_conversion_seconds": 12.894096148000017,
+        "preview_file": "/content/ppe-video-ready-results/20261115T124202Z-f2242e67/benchmark-61022d2c/gpu-dashboard-r1/20261115T124548Z-97c520f1/preview.mp4",
+        "decoded_frame_range_sha256": "6a5bc9adf3ef40845de215f9694333044bb4f898a41f73b745ca498ddc8b2f13",
+        "verification": {
+          "decoded_frames": 270,
+          "resolution": [
+            1280,
+            720
+          ],
+          "playback_fps": 25.0
+        },
+        "warmup_frames_excluded": 5,
+        "steady_frames": 265,
+        "mean_stage_ms": {
+          "decode": 12.693687675469707,
+          "frame_setup": 0.015195422642960385,
+          "inference": 19.375168690571368,
+          "assessment_and_hash": 88.81681326036775,
+          "render": 73.3861183132093,
+          "encode_submission": 72.72144730566069
+        },
+        "median_inference_ms": 17.57101800012606,
+        "inference_only_fps": 51.6124538562926,
+        "first_inference_ms": 129.55405299999256,
+        "detection_validation": {
+          "rejected_count": 0,
+          "frames_with_rejections": 0
+        }
+      }
+    ],
+    "scope": "Uploaded-file performance check, not accuracy evaluation. No frame skipping. Upload/download and readback verification excluded from job time. Job time includes model startup, all pipeline exports and optional H264 conversion. Inference-only FPS excludes decode, association, rendering and encoding. A Colab CPU/GPU comparison does not predict laptop speed."
+  },
+  "analysis": {
+    "status": "completed",
+    "stop_reason": "end_of_stream",
+    "frames": 270,
+    "indices_contiguous": true,
+    "unique_decoded_source_hashes": 270,
+    "worker_observations": {
+      "review required": 546
+    },
+    "reasons": [
+      [
+        "person touches image border; visibility uncertain",
+        546
+      ],
+      [
+        "vest: no match and region visibility unknown",
+        546
+      ],
+      [
+        "low person confidence",
+        6
+      ],
+      [
+        "helmet: no match and region visibility unknown",
+        6
+      ]
+    ],
+    "equipment_states": {
+      "helmet:matched": 540,
+      "vest:not_detected": 546,
+      "helmet:not_detected": 6
+    },
+    "stage_percentages": {
+      "decode": 4.8,
+      "frame_setup": 0.0,
+      "inference": 7.3,
+      "assessment_and_hash": 33.3,
+      "render": 27.5,
+      "encode_submission": 27.2
+    },
+    "ai_fraction": 0.07256388362758573,
+    "job_seconds": 86.3795449019999,
+    "video_seconds": 10.8
+  },
+  "independent_readback": {
+    "decoded_frames": 270,
+    "resolution": [
+      1280,
+      720
+    ],
+    "fps": 25.0,
+    "duration_seconds": 10.8,
+    "unique_small_frame_hashes": 270
+  },
+  "local_hash_microbenchmark": {
+    "array_contiguous": true,
+    "frame_bytes": 24883200,
+    "same_digest": true,
+    "copy_then_sha256_ms": 152.73492500394545,
+    "buffer_sha256_ms": 120.71685833385952,
+    "association_only_ms": 0.20243299994035624,
+    "scope": "Local CPU microbenchmark only; not measured on the Colab T4 host."
+  },
+  "limitations": [
+    "One GPU-only run, no controlled Colab CPU comparison.",
+    "Local hash microbenchmark is not a Colab measurement.",
+    "Accuracy needs independent annotations."
+  ]
+}

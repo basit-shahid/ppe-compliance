@@ -1,0 +1,63 @@
+{
+  "status": "completed",
+  "headless": false,
+  "isolated_profile": true,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "runs": [
+    {
+      "duration_seconds": 10.8,
+      "wall_seconds": 10.8125,
+      "video_frame_callbacks": 269,
+      "dropped_frames": 0,
+      "corrupted_frames": 0,
+      "waiting_or_stalled_events": [],
+      "presented_frame_increment_counts": {
+        "1": 268
+      },
+      "max_media_frame_gap_seconds": 0.040000000000000924,
+      "presentation_interval_ms": {
+        "median": 49.80000000000291,
+        "p95": 50.10000000000582,
+        "max": 66.60000000000582
+      },
+      "player_rectangle": {
+        "left": 380,
+        "top": 532.5625,
+        "width": 970,
+        "height": 545.625
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "duration_seconds": 10.8,
+      "wall_seconds": 10.80570000000298,
+      "video_frame_callbacks": 269,
+      "dropped_frames": 0,
+      "corrupted_frames": 0,
+      "waiting_or_stalled_events": [],
+      "presented_frame_increment_counts": {
+        "1": 268
+      },
+      "max_media_frame_gap_seconds": 0.040000000000000924,
+      "presentation_interval_ms": {
+        "median": 33.5,
+        "p95": 50.494999999995336,
+        "max": 66.70000000001164
+      },
+      "player_rectangle": {
+        "left": 380,
+        "top": 289.5625,
+        "width": 970,
+        "height": 545.625
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  ],
+  "scope": "Visible isolated Brave test of actual Streamlit upload, analysis and finished playback. These results do not rule out a problem in a different browser session."
+}

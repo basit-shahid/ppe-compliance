@@ -1,0 +1,82 @@
+{
+  "automated_tests": 109,
+  "video_frames_decoded": 30,
+  "video_jsonl_rows": 30,
+  "events": 9,
+  "unique_event_ids": 9,
+  "first_ten_worker_ids": [
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ],
+    [
+      "T001"
+    ]
+  ],
+  "events_for_T001": [
+    {
+      "event_id": 1,
+      "type": "track_started",
+      "track_id": "T001",
+      "time_seconds": 0.0,
+      "previous_status": null,
+      "status": "review required",
+      "reason": "New session-local geometric track"
+    },
+    {
+      "event_id": 2,
+      "type": "status_changed",
+      "track_id": "T001",
+      "time_seconds": 0.333333,
+      "previous_status": "review required",
+      "status": "PPE detected",
+      "reason": "Consistent current observations"
+    },
+    {
+      "event_id": 3,
+      "type": "status_changed",
+      "track_id": "T001",
+      "time_seconds": 2.0,
+      "previous_status": "PPE detected",
+      "status": "review required",
+      "reason": "Consistent current observations"
+    },
+    {
+      "event_id": 9,
+      "type": "track_lost",
+      "track_id": "T001",
+      "time_seconds": 4.5,
+      "previous_status": null,
+      "status": "review required",
+      "reason": "Worker no longer observed; ID retired"
+    }
+  ],
+  "limitations": [
+    "Video is a validation-still sequence, not natural motion.",
+    "HD camera check observed no workers.",
+    "Camera media remains local."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "stop_reason": "end_of_stream",
+  "error": null,
+  "run_directory": "outputs\\tracking-video-check\\20261114T130154Z-d619a48d",
+  "source": "D:\\ppe-compliance\\data\\samples\\phase5-validation-sequence.mp4",
+  "source_kind": "recorded_video",
+  "source_sha256": "43e901e2af67819d5c4a6d2099e21ad64a0fd92ce0b099723bbf6a3ee92c85c4",
+  "source_fps_metadata": 6.0,
+  "source_frame_count_metadata": 30,
+  "output_fps": 6.0,
+  "output_duration_seconds": 5.0,
+  "source_resolution": [
+    960,
+    540
+  ],
+  "output_resolution": [
+    960,
+    540
+  ],
+  "odd_dimension_policy": "pad right/bottom by at most one pixel for MP4; report coordinates stay in source space",
+  "output_codec": "mp4v",
+  "audio_preserved": false,
+  "processed_frames": 30,
+  "intentional_frame_skipping": false,
+  "image_size": 640,
+  "confidence_threshold": 0.25,
+  "weights": "models/best.pt",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "model_classes": {
+    "0": "person",
+    "1": "helmet",
+    "2": "vest"
+  },
+  "device": "cpu",
+  "rules": {
+    "min_confidence": 0.5,
+    "min_person_height": 80.0,
+    "min_person_width": 20.0,
+    "min_equipment_size": 5.0,
+    "min_region_coverage": 0.65,
+    "ownership_margin": 0.15,
+    "person_overlap_iou": 0.35,
+    "border_margin": 2.0
+  },
+  "preview_enabled": false,
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.13.3",
+  "packages": {
+    "ultralytics": "8.4.212",
+    "torch": "2.15.0",
+    "opencv-python": "4.14.0.94",
+    "numpy": "2.5.4"
+  },
+  "camera_controls": {},
+  "camera_control_restore_warnings": [],
+  "capture_backend_requested": "auto",
+  "capture_backend_selected": "default",
+  "processing_wall_seconds": 10.395903900000121,
+  "end_to_end_processing_fps": 2.8857519546712673,
+  "total_wall_seconds": 15.855801300000167,
+  "model_load_seconds": 5.4462205000018,
+  "first_output_seconds_since_start": 10.410033500000281,
+  "frame_latency_seconds": {
+    "mean": 0.3461429866669884,
+    "min": 0.11131799999930081,
+    "max": 4.950080300000991,
+    "first": 4.950080300000991
+  },
+  "frame_latency_scope": "read through JSONL flush; progress/stop handling and final resource flushing are included in wall-clock throughput instead",
+  "worker_observations": {
+    "PPE detected": 8,
+    "potential violation": 0,
+    "review required": 62
+  },
+  "tracking_enabled": true,
+  "tracking": {
+    "tracks_created": 6,
+    "active_tracks": 5,
+    "events": 9,
+    "confirmed_status_changes": 2,
+    "rules": {
+      "min_iou": 0.25,
+      "ambiguity_margin": 0.1,
+      "track_ttl_seconds": 1.2,
+      "max_observation_gap_seconds": 0.5,
+      "confirmation_observations": 3,
+      "confirmation_seconds": 0.2
+    }
+  },
+  "note": "Worker observations are per frame, not unique people. Optional geometric track IDs are session-local, not verified identity. No automatic missing-PPE violations. Model-input size and source resolution affect speed and recall. Webcam driver buffering/drops are not measured; stream elapsed time is not a device capture timestamp. Constant-FPS webcam output may play faster/slower than wall time. File timestamps use nominal FPS, not variable-rate presentation timestamps. EOF and decode failure cannot always be distinguished from backend metadata."
+}

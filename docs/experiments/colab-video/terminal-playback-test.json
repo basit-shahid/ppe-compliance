@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "file": "D:\\ppe-compliance\\outputs\\recorded-lag\\notebook-check\\runtime\\ppe-video-ready-results\\20261115T150530Z-e8360b3b\\benchmark-1c3868ef\\cpu-dashboard-r1-efficient\\20261115T150538Z-239d885b\\dashboard.mp4",
+  "displayed_frames": 270,
+  "playback_fps": 25.0,
+  "wall_seconds": 10.844014200003585,
+  "measured_submission_fps": 24.898528812320325,
+  "pacing_resets": 0,
+  "intentional_frame_skipping": false
+}

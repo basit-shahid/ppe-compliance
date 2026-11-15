@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-15",
+  "automated_tests": 130,
+  "automated_result": "pass",
+  "dependency_check": "pip check: no broken requirements",
+  "real_model_image": {
+    "lossless_png": true,
+    "worker_evidence_json": true,
+    "source": "development validation image; not independent accuracy"
+  },
+  "real_model_video": {
+    "video_frames_decoded": 12,
+    "source_fps": 6.0,
+    "output_fps": 6.0,
+    "video_resolution": [
+      960,
+      540
+    ],
+    "processing_fps": 3.8075945074345334
+  },
+  "browser_playback": {
+    "readyState": 4,
+    "width": 960,
+    "height": 540,
+    "duration": 5,
+    "currentTime": 2.0148,
+    "error": null
+  },
+  "renderer_microbenchmark": {
+    "2048_square": {
+      "mean_render_ms": 9.72016600004281,
+      "chrome_builds": 1
+    },
+    "1280x720": {
+      "mean_render_ms": 11.912556000024779,
+      "chrome_builds": 1
+    }
+  },
+  "renderer_scope": "100 changing synthetic source sequence numbers with unchanged analyzed result, cached chrome, 1280x720 dashboard. Wall time varies with concurrent load; not camera FPS.",
+  "worker_evaluation_runner": "Controlled one-image end-to-end fixture verified manifest, predictions, metrics and overlay exports. Not independent accuracy evidence.",
+  "camera_check": {
+    "index": 1,
+    "backend": "msmf",
+    "resolution": [
+      1280,
+      720
+    ],
+    "requested_fps": 30,
+    "driver_fps": 30.0,
+    "result": "Real DroidCam image visually confirmed after initial solid green startup frame. Sandbox capture failed; host camera access succeeded.",
+    "duration_seconds": 35.672956199996406,
+    "capture_reads": 993,
+    "assessed_frames": 113,
+    "live_preview_fps": 20.275893887376608,
+    "assessment_throughput_fps": 4.0837651942131705,
+    "mean_result_age_after_first_seconds": 0.18378769732199934,
+    "first_result_age_seconds": 8.834829500003252,
+    "model_load_seconds": 7.989430599991465,
+    "recording_enabled": false,
+    "stop_reason": "duration",
+    "error": null,
+    "note": "35-second local camera integration check with one nearby person; not sustained PPE accuracy or a controlled profile comparison. Camera test snapshots remain in ignored local outputs only."
+  },
+  "manual_visual_review": [
+    "Native monitor render",
+    "Browser image result",
+    "Browser video playback",
+    "900px-wide browser image result"
+  ],
+  "local_artifacts": "outputs/quality-review/",
+  "limitations": [
+    "No independent test images/labels supplied.",
+    "Existing model weights and conservative rules unchanged.",
+    "Higher source FPS requires driver support; no claim of 30 FPS AI inference.",
+    "Physical-camera recheck lasted 35 seconds, not a sustained benchmark; startup result latency was 8.8 seconds."
+  ],
+  "initial_camera_check": {
+    "index": 1,
+    "backend": "msmf",
+    "requested_resolution": [
+      1280,
+      720
+    ],
+    "requested_fps": 30,
+    "result": "unavailable; cannot open camera"
+  },
+  "recorded_video_dashboard": {
+    "automated_result": "130-test suite passed; affected overlay and five UI tests repeated after final UI/layout adjustments",
+    "real_model_export": {
+      "run_directory": "outputs\\recorded-interface-check\\20261115T095939Z-7c157764",
+      "decoded_dashboard_frames": 12,
+      "dashboard_shape": [
+        720,
+        1280,
+        3
+      ],
+      "source_resolution": [
+        960,
+        540
+      ],
+      "source_fps": 6.0,
+      "output_fps": 6.0,
+      "worker_example": {
+        "worker_id": "T001",
+        "status": "review required",
+        "person_confidence": 0.9318329691886902,
+        "helmet": {
+          "state": "matched",
+          "detection_id": 2,
+          "confidence": 0.8394319415092468,
+          "association_score": 0.98671,
+          "region_visible": null
+        },
+        "vest": {
+          "state": "matched",
+          "detection_id": 1,
+          "confidence": 0.8756055235862732,
+          "association_score": 0.971575,
+          "region_visible": null
+        }
+      },
+      "limitation": "Development still sequence; interface integration only."
+    },
+    "browser_playback": {
+      "width": 1280,
+      "height": 720,
+      "duration": 5,
+      "currentTime": 0.7,
+      "error": null
+    },
+    "visual_review": "Monitor dashboard uses shared live renderer, exact source-frame inset and per-worker P/H/V detection confidence. Badges kept to one compact line.",
+    "source_resolution_export": "annotated.mp4 retained alongside dashboard.mp4 and H264 preview.mp4",
+    "notes": [
+      "Existing videos must be reanalyzed; old exports are not overwritten.",
+      "Source-clock and frame counts remain synchronized. Missing matched scores display --."
+    ]
+  }
+}

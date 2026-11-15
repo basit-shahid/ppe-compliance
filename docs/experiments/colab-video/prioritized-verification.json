@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "unit_tests": 161,
+  "pip_check": "passed",
+  "app_http_status": 200,
+  "all_notebook_code_cells_executed": 8,
+  "cuda_emulated": false,
+  "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+  "decoded_export_frames": 270,
+  "unique_output_thumbnail_sha256": 270,
+  "unique_decoded_source_sha256": 270,
+  "frame_indices_contiguous": true,
+  "playback_fps": 25.0,
+  "duration_seconds": 10.8,
+  "output_resolution": [
+    1280,
+    720
+  ],
+  "bundle_files_verified_against_current_workspace": 18,
+  "notebook_pipeline_sources_match_current_workspace": true,
+  "worker_observations": {
+    "review required": 549
+  },
+  "scope": "Real-model local CPU execution and readback; no new Colab installation or CUDA performance measurement."
+}

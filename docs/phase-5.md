@@ -80,7 +80,9 @@ frames have elapsed processing-loop time, not verified device-capture timestamps
 File times use frame index / nominal FPS; variable-rate presentation times are
 not supported.
 
-**There is no tracking:** W1 in one frame is not a persistent identity. Summary
+**Default processing has no tracking:** W1 is frame-local. The unpublished optional
+`--track` enhancement adds geometric session IDs and status-change events; see
+[tracking/UI guide](tracking-ui.md). Summary
 worker observations count repeated per-frame statuses, not distinct people.
 
 ## Rules, visibility and stop handling

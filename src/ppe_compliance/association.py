@@ -47,7 +47,7 @@ def iou(a, b):
     return overlap / union if union else 0.0
 
 
-def _candidate_score(person, equipment, kind, rules):
+def _candidate_score(person, equipment, kind, rules, image_height=None, scale=1.):
     left, top, right, bottom = person
     width, height = right - left, bottom - top
     x1, y1, x2, y2 = equipment
@@ -58,6 +58,17 @@ def _candidate_score(person, equipment, kind, rules):
             return None
     else:
         region = [left-.02*width, top+.16*height, right+.02*width, top+.72*height]
+        # A bottom-cropped person's visible height ends at their torso. Extend
+        # only when the vest itself reaches that same crop boundary, starts
+        # below the head, and remains inside the visible person. This is still
+        # candidate ownership: border visibility keeps the worker in Review.
+        margin = rules.border_margin/scale
+        cropped_vest = (image_height is not None and image_height-bottom <= margin and
+                        image_height-y2 <= margin and top+.25*height <= y1 <= top+.55*height and
+                        y2-y1 >= .25*height and x2-x1 >= .35*width and
+                        intersection(person, equipment)/area(equipment) >= .9)
+        if cropped_vest:
+            region[3] = bottom
         if y2-y1 > .75*height or x2-x1 > 1.1*width:
             return None
     if not (region[0] <= cx <= region[2] and region[1] <= cy <= region[3]):
@@ -112,7 +123,7 @@ def associate_ppe(detections, image_width, image_height, image_size=640, rules=N
         kind = equipment["class_name"]
         candidates = []
         for index, person in enumerate(people):
-            score = _candidate_score(person["bbox_xyxy"], equipment["bbox_xyxy"], kind, rules)
+            score = _candidate_score(person["bbox_xyxy"], equipment["bbox_xyxy"], kind, rules, image_height, scale)
             if score is not None:
                 candidates.append((score, index))
         candidates.sort(key=lambda pair: (-pair[0], pair[1]))

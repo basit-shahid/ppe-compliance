@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "summary": {
+    "schema_version": 1,
+    "mode": "recorded-live-preview",
+    "status": "completed",
+    "stop_reason": "end_of_video",
+    "error": null,
+    "run_directory": "outputs\\recorded-live-final\\20261115T172230Z-4fdc1561",
+    "source": "D:\\ppe-compliance\\data\\samples\\my-test-video.mp4",
+    "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+    "source_fps_metadata": 25.0,
+    "source_frame_count_metadata": 270,
+    "source_resolution": [
+      3840,
+      2160
+    ],
+    "processing_resolution": [
+      960,
+      540
+    ],
+    "processing_height_limit": 540,
+    "image_size": 416,
+    "source_coordinate_scale": [
+      4.0,
+      4.0
+    ],
+    "frame_hash_scope": "streamed_processing_bgr",
+    "analysis_fps_limit": 2.5,
+    "playback_source": "outputs\\recorded-live-final\\.playback-cache\\de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380-960x540-v1.mp4",
+    "playback_source_preparation": {
+      "source_sha256": "de726ec837019c91673e56bae99e7293597a6c79a3bd572551c5efd1316f9380",
+      "sha256": "e11b4ad01821841a3cf932dedff1654c41b38b0301910a7bc35e387c648fe660",
+      "resolution": [
+        960,
+        540
+      ],
+      "fps": 25.0,
+      "frames": 270,
+      "cached": true
+    },
+    "preparation_seconds": 0.3576854999992065,
+    "weights": "models/best.pt",
+    "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+    "device": "cpu",
+    "source_frames_played": 270,
+    "processed_frames": 28,
+    "source_frames_not_analyzed": 242,
+    "intentional_analysis_sampling": true,
+    "intentional_source_frame_skipping": false,
+    "interpolation": false,
+    "playback_seconds": 11.593745300007868,
+    "source_submission_fps": 23.288419144399935,
+    "playback_pacing_resets": 16,
+    "mean_playback_stage_ms": {
+      "read": 1.0907344450566192,
+      "wait": 8.179613703396171,
+      "render": 24.746672963104814,
+      "gui_poll": 9.92067703687267
+    },
+    "warmup_seconds": 30.764588800011552,
+    "inference_cpu_threads": 1,
+    "total_wall_seconds": 43.26255949999904,
+    "worker_observations": {
+      "PPE detected": 0,
+      "potential violation": 0,
+      "review required": 56
+    },
+    "detection_validation": {
+      "rejected_count": 0
+    },
+    "analysis_latency_seconds": {
+      "mean": 0.3520939821433525,
+      "max": 0.449059299993678
+    },
+    "note": "Every source frame is submitted in order at nominal source FPS when decoding/rendering keep up. Large inputs use a cached resized playback copy prepared alongside AI warm-up; original files remain unchanged. AI consumes selected latest frames only. The separate scored pane retains its exact frame/time; no AI boxes are drawn on moving source video. JSONL is sampled evidence, not an all-frame report. No scored movie export or audio playback. Source timestamps use nominal FPS, not variable-rate PTS."
+  },
+  "all_source_indices_rendered_in_order": true,
+  "source_pane_has_no_added_AI_pixels_in_checked_frames": true,
+  "analysis_samples_replayed_and_hash_verified": 28,
+  "processed_frame_indices": [
+    0,
+    8,
+    16,
+    26,
+    35,
+    44,
+    55,
+    65,
+    75,
+    84,
+    95,
+    104,
+    114,
+    124,
+    135,
+    144,
+    153,
+    162,
+    171,
+    180,
+    189,
+    198,
+    208,
+    217,
+    227,
+    236,
+    246,
+    255
+  ],
+  "all_matched_scores_equal_their_detection_confidences": true,
+  "unit_tests": 178,
+  "pipeline_source_sha256": {
+    "recorded_preview.py": "f41e3ff65a462067c806e6839dfa5a40ccb87fd6b20d1065d20bed589c980032",
+    "preview_ui.py": "f79fc261a501bd959bb1d417c6961b6e3c30ca76abc77944dc4d025469168fa4",
+    "detector.py": "78f7fa2e340ce2038cde043a593b69c541313b6318d208873bf9e34d15cb36dc",
+    "rendering.py": "7d4cde9ef2df1e0efdaf74cd223828448849037049b67efebe1b196ede418d98",
+    "association.py": "85b980a81c83a7e76fbfae1b8d117c992db1a395754e16ee2899ac18f30aa77f",
+    "tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208"
+  },
+  "scope": "Native source-frame submission and exact sampled-evidence checks; no OS compositor frame-drop counter or independent accuracy measurement."
+}
