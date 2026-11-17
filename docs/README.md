@@ -2,12 +2,20 @@
 
 ## Start here
 
+- [Pipeline and architecture](pipeline.md): complete runtime flow, geometry, rules,
+  video modes, timing and output contracts.
+- [Code walkthrough and viva](code-walkthrough.md): important modules, traced example
+  and examiner questions with implementation-specific answers.
+- [Presentation guide](presentation-guide.md): setup, six-minute demo, backup and troubleshooting.
+- [Finalization audit](final-audit.md): reviewed findings, fixes, test evidence and remaining limits.
+- [Presentation PDF](PPE_Presentation.pdf) and [editable slide content](submission-slides.md).
 - [Project checkpoint](project-status.md): current milestone and next steps.
 - [Comprehensive report (PDF)](PPE_Project_Comprehensive_Report.pdf): full project,
-  proposal alignment, all phases, acceptance gates and suggested team roles.
-  This report is the earlier Phase 3 snapshot; the checkpoint and phase guides
-  record subsequent implementation.
+  current implementation, dataset/training evidence, worker/video pipelines,
+  reliability, verification and reproduction. Updated 16 November 2026.
 - [Report source](project-report.md): editable Markdown used to generate the PDF.
+- [Historical Phase 3 report](archive/phase-3-project-report.md): earlier milestone;
+  its planned-work statements have been superseded by the current report.
 - [Phase plan](plan.md): current gates and original relative schedule.
 
 ## Completed work

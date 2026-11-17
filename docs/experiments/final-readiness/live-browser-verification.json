@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "checked_date": "2026-11-17",
+  "scope": "Actual browser preview, changing images, AI results and Stop controls; short checks only.",
+  "checks": [
+    {
+      "source_kind": "camera",
+      "status": "stopped",
+      "camera_index": 1,
+      "backend": "msmf",
+      "processed_frames": 2,
+      "source_frames": 510,
+      "stop_reason": "browser_stop",
+      "run_directory": "outputs\\20261116T180345Z-8b33bd76",
+      "moving_images_observed_in_browser": true,
+      "ai_results_observed_in_browser": true,
+      "stop_control_verified": true,
+      "checked_date": "2026-11-16"
+    },
+    {
+      "source_kind": "video",
+      "checked_date": "2026-11-17",
+      "status": "stopped",
+      "source_frames": 22,
+      "total_source_frames": 1096,
+      "processed_frames": 3,
+      "stop_reason": "preview_stop",
+      "run_directory": "outputs\\20261117T093240Z-a27c5dee",
+      "source_sha256": "65d1415adfd002d9e8fff47cd047b4610077125edb0b03c54d99f17d8f4377a8",
+      "moving_images_observed_in_browser": true,
+      "ai_results_observed_in_browser": true,
+      "stop_control_verified": true
+    }
+  ]
+}

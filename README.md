@@ -1,15 +1,20 @@
-# PPE Compliance Detection
+# PPE Vision — Worker PPE Review
 
 A semester AI project using a fine-tuned YOLO11 nano model to detect workers,
 helmets and high-visibility safety clothing. Development follows seven phases
 covering data, training, worker-level PPE checks, video and final evaluation.
 
-**Current milestone:** PPE training, image assessment, recorded video and local
-webcam processing and the focused image/video/camera interface are implemented. Independent final evaluation is pending test data. Geometry
+**Presentation milestone (16 November 2026):** the redesigned inspection workspace,
+image/video/camera pipelines, worker evidence, tracking, regression checks and
+current documentation are implemented. Independent final evaluation is pending test data. Geometry
 matches and model detections do not establish wearing state or workplace safety.
 
-[Comprehensive report (PDF)](docs/PPE_Project_Comprehensive_Report.pdf) ·
-[Current checkpoint](docs/project-status.md) · [Documentation index](docs/README.md)
+[Project report (PDF)](docs/PPE_Project_Comprehensive_Report.pdf) ·
+[Presentation slides (PDF)](docs/PPE_Presentation.pdf) ·
+[Pipeline](docs/pipeline.md) · [Code & viva guide](docs/code-walkthrough.md) ·
+[Demo checklist](docs/presentation-guide.md) · [Final audit](docs/final-audit.md)
+
+![PPE Vision inspection workspace](docs/assets/ppe-vision-workspace.png)
 
 ## What works
 
@@ -39,15 +44,19 @@ accuracy result. [Attribution and changes](docs/dataset-attribution.md).*
 ```
 
 Open http://127.0.0.1:8501. Upload an image or video, choose Balanced/Detail/Fast,
-and analyze. The workspace uses compact corner markers, expandable worker evidence,
+and analyze. For a repeatable demonstration, select **Use the included presentation
+sample** in Image mode. Results have annotated/source-comparison tabs, filterable
+worker evidence and selected-file downloads. **Project guide** explains the pipeline;
+**Validation** reads the saved development metrics. The workspace uses compact corner markers,
 lossless image exports and browser-compatible video previews. Video defaults to a
 300-frame preview; choose 0 for a full export. Recorded playback defaults to the
 same monitor dashboard as the live camera, with synchronized worker cards and
 person/helmet/vest confidence scores on frames. Video options offers a frame-only
 view, and Advanced settings can hide scores or show equipment boxes.
-Live camera mode opens the native
-monitor with a large video and small evidence sidebar. Tab switches focus,
-F toggles full screen, and Q/Esc stops.
+Live camera and Smooth live review now default to **In this browser**.
+Press **Start live camera** or **Start live review**; the dashboard appears below
+with a **Stop live preview** control. The optional **Desktop window** choice
+retains native monitoring (Tab changes focus; Q/Esc stops).
 
 For smoother HD capture from the terminal:
 
@@ -62,6 +71,17 @@ See [interface and quality guide](docs/phase-6.md) and
 [final evaluation workflow](docs/phase-7.md).
 
 ## Baseline results
+
+Before presenting, run the repeatable software and actual-model rehearsal:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/verify_presentation.py
+```
+
+It creates a new evidence folder under `outputs/` and checks dependencies, the
+automated suite, real CPU image inference and H.264 video integrity. It does not
+open a physical camera or establish independent accuracy. See the
+[final audit](docs/final-audit.md) for current findings and verification limits.
 
 Trained on a Colab Tesla T4 for 30 epochs, image size 640, batch 8 and seed 42,
 using **799 training and 200 validation images**.
@@ -322,9 +342,10 @@ ppe-compliance/
 
 ## Verification and evaluation
 
-The app defaults to **Smooth live review** for recorded video. It opens a desktop
-window: the main pane plays original motion while a background worker scores
-selected frames in a separate, timestamped pane. Start it from the terminal with:
+The app defaults to **Smooth live review → In this browser** for recorded video.
+A background process publishes a sampled live dashboard while AI scores selected
+frames in a separate, timestamped pane. Browser updates are independent of source
+FPS. Stop directly in the page. For native desktop review from the terminal:
 
 ```powershell
 .\.venv\Scripts\ppe.exe video --source "data/samples/my-test-video.mp4" --weights models/best.pt --image-size 416 --device cpu --track --live-preview

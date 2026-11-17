@@ -5,6 +5,15 @@ import hashlib
 import math
 
 
+def validate_inference_options(confidence, image_size):
+    """Reject invalid public API settings before importing/loading a model."""
+    if (isinstance(confidence, bool) or not isinstance(confidence, (int, float))
+            or not math.isfinite(confidence) or not 0 < confidence <= 1):
+        raise ValueError("Confidence must be a finite number in (0, 1]")
+    if type(image_size) is not int or image_size <= 0:
+        raise ValueError("Image size must be a positive integer")
+
+
 def validated_model_detections(candidates, width, height):
     """Reject unusable model outputs before strict downstream association.
 
@@ -55,6 +64,7 @@ class FrameDetector:
     """Load a model once and reuse it across image/video frames."""
 
     def __init__(self, weights, confidence=0.25, image_size=640, device="cpu"):
+        validate_inference_options(confidence, image_size)
         from ultralytics import YOLO
 
         self.model = YOLO(weights)
@@ -66,8 +76,13 @@ class FrameDetector:
         self.weights_sha256 = file_sha256(Path(weights)) if Path(weights).is_file() else None
 
     def detect(self, frame, source):
-        result = self.model.predict(source=frame, conf=self.confidence, imgsz=self.image_size,
-                                    device=self.device, verbose=False)[0]
+        try:
+            result = self.model.predict(source=frame, conf=self.confidence, imgsz=self.image_size,
+                                        device=self.device, verbose=False)[0]
+        except AssertionError as error:
+            # Ultralytics uses assertions for unavailable CUDA/MPS devices.
+            raise ValueError(f"Inference settings were rejected on device {self.device!r}. "
+                             f"Try device cpu and check the selected weights. Details: {error}") from error
         candidates = []
         if result.boxes is not None:
             for box in result.boxes:

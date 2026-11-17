@@ -1,5 +1,10 @@
 # Reviewed documentation figures
 
+- `ppe-vision-workspace.png`: redesigned local inspection workspace, captured in
+  a dedicated Chromium session on 16 November 2026.
+- `ppe-vision-result.png`: actual local-model image result in the same UI.
+  The source is the attributed validation sample in `app/assets/README.md`;
+  it demonstrates integration, not independent accuracy.
 - `phase-3-local-detection.jpg`: selected PPE-model predictions on a validation
   image, generated locally. Not an independent test or worker-compliance result.
 - `phase-3-training-curves.png`: returned baseline-001 training curves.

@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "case": "help",
+      "passed": true,
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "case": "invalid-confidence",
+      "passed": true,
+      "exit_code": 2,
+      "expected_exit_code": 2
+    },
+    {
+      "case": "invalid-image-size",
+      "passed": true,
+      "exit_code": 2,
+      "expected_exit_code": 2
+    },
+    {
+      "case": "unavailable-cuda",
+      "passed": true,
+      "exit_code": 1,
+      "expected_exit_code": 1
+    }
+  ],
+  "status": "passed"
+}

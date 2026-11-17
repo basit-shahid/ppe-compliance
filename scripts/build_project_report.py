@@ -21,8 +21,8 @@ from reportlab.platypus.tableofcontents import TableOfContents
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "docs/project-report.md"
 TARGET = ROOT / "docs/PPE_Project_Comprehensive_Report.pdf"
-NAVY = colors.HexColor("#17344B")
-TEAL = colors.HexColor("#087F8C")
+NAVY = colors.HexColor("#163631")
+TEAL = colors.HexColor("#087F6F")
 GRAY = colors.HexColor("#526370")
 LIGHT = colors.HexColor("#EDF5F7")
 PAGE_WIDTH, PAGE_HEIGHT = A4
@@ -89,12 +89,12 @@ def decorate(canvas, document):
     if document.page > 1:
         canvas.setFont(BOLD, 8)
         canvas.setFillColor(GRAY)
-        canvas.drawString(50, PAGE_HEIGHT - 33, "PPE COMPLIANCE | PROJECT REVIEW & ROADMAP")
+        canvas.drawString(50, PAGE_HEIGHT - 33, "PPE VISION | IMPLEMENTATION & PRESENTATION REPORT")
     canvas.setStrokeColor(colors.HexColor("#D7E4E8"))
     canvas.line(50, 39, PAGE_WIDTH - 50, 39)
     canvas.setFont(REGULAR, 8)
     canvas.setFillColor(GRAY)
-    canvas.drawString(50, 25, "Status: 14 November 2026 | Verified results and proposed next phases")
+    canvas.drawString(50, 25, "16 November 2026 | Software readiness; independent evaluation pending")
     canvas.drawRightString(PAGE_WIDTH - 50, 25, str(document.page))
     canvas.restoreState()
 
@@ -131,24 +131,24 @@ def make_table(lines):
 
 def build():
     story = [Spacer(1, 65), Paragraph("AI SEMESTER PROJECT", styles["Subsection"]),
-             Spacer(1, 16), Paragraph("Real-Time PPE Compliance<br/>and Safety Violation Detection", styles["CoverTitle"]),
-             Paragraph("Comprehensive project review<br/>Implementation roadmap and three-member role plan", styles["CoverSubtitle"]),
+             Spacer(1, 16), Paragraph("PPE Vision<br/>Worker PPE Detection<br/>and Evidence Review", styles["CoverTitle"]),
+             Paragraph("Final implementation report<br/>Architecture, code, verification and presentation", styles["CoverSubtitle"]),
              Spacer(1, 15)]
     story.append(make_table([
         "| Snapshot | Position |",
-        "| Completed | Environment, training data preparation, GPU baseline and local image inference |",
-        "| Next | Worker/PPE association, uncertainty rules and per-worker image output |",
-        "| Remaining | Video/camera integration, interface, independent evaluation and submission |",
+        "| Implemented | Detection, worker evidence, video/camera pipelines, tracking and the PPE Vision interface |",
+        "| Verified | Automated checks, real-model CPU image/video integration and browser workflow |",
+        "| Pending | Independent accuracy evaluation and sustained deployment measurements |",
     ]))
-    story += [Spacer(1, 28), Paragraph("14 November 2026", styles["Subsection"]),
-              Paragraph("Prepared from the supplied seven-page proposal presentation and verified project artifacts. Future designs and member responsibilities are explicitly proposed; independent final evaluation is still outstanding.", styles["ReportBody"]),
-              Paragraph("Member A / Member B / Member C are assignable role labels. No names, institutional details or completion dates have been invented.", styles["Caption"]), PageBreak(),
+    story += [Spacer(1, 28), Paragraph("16 November 2026", styles["Subsection"]),
+              Paragraph("Prepared against the implemented repository and recorded verification. Development validation metrics are distinguished from independent final accuracy, which remains outstanding.", styles["ReportBody"]),
+              Paragraph("Local inference, explicit uncertainty and reviewable evidence. Team names and institutional details can be added by the project members.", styles["Caption"]), PageBreak(),
               Paragraph("Contents", styles["CoverTitle"])]
     toc = TableOfContents()
     toc.levelStyles = [ParagraphStyle("ContentsEntry", fontName=REGULAR, fontSize=9.4,
                                       leading=13, spaceBefore=3, textColor=NAVY)]
     story += [toc, Spacer(1, 18), Paragraph("Reading guide", styles["Subsection"]),
-              Paragraph("Sections 1-3 establish scope and proposal alignment. Sections 4-9 explain completed work. Sections 10-14 describe the planned remaining phases. Sections 15-17 allocate responsibilities, handoffs and risks. Sections 18-19 provide reproduction details and evidence boundaries.", styles["ReportBody"])]
+              Paragraph("Sections 1-4 cover scope, data and recorded training. Sections 5-9 explain the implemented pipeline, interface and failure handling. Sections 10-12 cover verification, evaluation limits and reproduction. Companion pipeline, code and demo guides provide practical examination preparation.", styles["ReportBody"])]
     lines = SOURCE.read_text(encoding="utf-8").splitlines()
     index = next(i for i,line in enumerate(lines) if line.startswith("## "))
     while index < len(lines):
@@ -196,7 +196,7 @@ def build():
             story.append(Paragraph(rich(" ".join(paragraph)), styles["ReportBody"]))
     document = ReportDocument(str(TARGET), pagesize=A4, leftMargin=50, rightMargin=50,
                               topMargin=57, bottomMargin=54,
-                              title="PPE Project: Comprehensive Review and Roadmap",
+                              title="PPE Vision: Implementation and Presentation Report",
                               author="PPE Compliance Project Team")
     document.addPageTemplates(PageTemplate(id="report", frames=[Frame(50,54,WIDTH,PAGE_HEIGHT-111,
                                                                       leftPadding=0,rightPadding=0,

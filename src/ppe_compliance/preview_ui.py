@@ -14,15 +14,15 @@ def _color(value):
     return tuple(int(value[i:i+2], 16) for i in (4, 2, 0))
 
 
-BG = _color('10151D')
-PANEL = _color('191F29')
-LINE = _color('2B3340')
-TEXT = _color('EBEFF5')
-MUTED = _color('9DAABA')
-BLUE = _color('76B8EE')
-GREEN = _color('62CE8C')
-AMBER = _color('EFC16A')
-RED = _color('F08484')
+BG = _color('102F2B')
+PANEL = _color('1A3C34')
+LINE = _color('36594A')
+TEXT = _color('EDF4EF')
+MUTED = _color('B0C6B9')
+BLUE = _color('A7D4B4')
+GREEN = _color('80D8A3')
+AMBER = _color('E7BE61')
+RED = _color('F1A29A')
 LARGE_PANE, SMALL_PANE = (24,126,944,532), (992,126,264,150)
 
 
@@ -83,7 +83,7 @@ class DashboardRenderer:
         sampled = stats.get('mode') == 'recorded_live'
         recorded = sampled or stats.get('mode') == 'recorded'
         scores = stats.get('show_scores', True)
-        text('PPE Monitor', 24, 37, 25, TEXT, True)
+        text('PPE Vision', 24, 37, 25, TEXT, True)
         text('Original video + selected AI frames' if sampled else ('Recorded video review' if recorded else 'Visible equipment assessment'), 24, 62, 14, MUTED)
         text('PLAYBACK FPS' if recorded else 'LIVE FPS', 650, 27, 11, MUTED)
         text('AI / S' if sampled else ('PROCESS / S' if recorded else 'AI / S'), 800, 27, 11, MUTED)

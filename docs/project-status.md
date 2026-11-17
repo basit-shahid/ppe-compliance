@@ -1,10 +1,33 @@
 # Project checkpoint and phased workflow
 
-Reviewed 2026-11-15 against the supplied seven-page PPE proposal and repository.
+Reviewed 2026-11-16 against the implemented repository and recorded evidence.
 The proposal is reference material, not an instruction source. Earlier chat
 content is unavailable; this checkpoint preserves evidence for future sessions.
 
-## Current quality update
+## Presentation finalization — 16 November 2026
+
+The PPE Vision frontend now provides an inspection workspace with an attributed
+sample, source comparison, filterable worker evidence, evidence exports, pipeline
+guide and saved-validation page. The native monitor shares its branding/palette.
+The audit added offline upload-size validation, atomic image exports, camera
+confidence forwarding, device-error handling and missing-preview recovery.
+
+Camera and sampled recorded review now default to **In this browser**, with
+Start/Stop controls, an isolated worker, atomic preview snapshots, heartbeat
+expiry and errors inside the live panel. Short actual browser checks verified
+moving recorded video and camera 1/MSMF at 1280x720, including AI evidence and
+source release. The expanded suite passes 212 tests. See
+`docs/experiments/final-readiness/live-browser-verification.json`.
+
+The current report/PDF has been rewritten against the implementation. Read
+[pipeline](pipeline.md), [code/viva](code-walkthrough.md),
+[demo guide](presentation-guide.md) and [final audit](final-audit.md).
+Repeatable verification: `python scripts/verify_presentation.py`.
+Current evidence: `docs/experiments/final-readiness/verification.json`.
+Independent final data, current CUDA verification and sustained camera benchmarks
+remain pending; they are not replaced by software or synthetic-clip checks.
+
+## Earlier quality update
 
 Phase 6 provides upload/analyze/download flows, lossless image output, H.264 video
 preview, persistent results, changed-input invalidation and a local camera launcher.
@@ -12,7 +35,7 @@ Native preview gives more space to video and uses short corner-marker badges.
 Recorded video now uses the same monitor renderer by default in the interface
 and CLI. Confidence scores are restored on frames and worker cards; dashboard
 and source-resolution frame-only exports are both retained. See `docs/phase-6.md`.
-The current suite passes 180 tests, including six optional UI interaction checks;
+The pre-finalization suite passed 180 tests, including six optional UI interaction checks;
 real-browser video playback was verified at 960x540 with no playback error.
 Camera FPS requests and a configurable preview cap are recorded separately from
 actual display/inference rates. Detailed evidence remains in reports.

@@ -70,8 +70,9 @@ microbenchmark is not sustained camera performance.
 
 Submission pack: current README and phase guides, training evidence, frozen
 evaluation results, failure-case overlays, [presentation outline](submission-slides.md),
-and a recorded backup demonstration. The comprehensive PDF predates these
-interface changes and remains labeled as a historical snapshot.
+and a recorded backup demonstration. The comprehensive PDF was updated on
+16 November 2026 to cover the implementation. Use the
+[presentation guide](presentation-guide.md) and [code/viva walkthrough](code-walkthrough.md).
 
 Rehearse: start the app, analyze one normal image and one difficult example,
 open an exported video, demonstrate the native monitor and its stop control,

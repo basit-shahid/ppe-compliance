@@ -3,6 +3,25 @@
 Run from the repository root with the project environment. Application dependencies
 are declared in `pyproject.toml`. Dataset preparation preserves the source files.
 
+## Final presentation checks
+
+```powershell
+.\.venv\Scripts\python.exe scripts/verify_presentation.py
+```
+
+Runs dependency checks, automated tests and actual CPU image/video inference with
+local weights. Decodes exports and checks JSON, dimensions, frame counts, FPS and
+source timestamps. Creates a new `outputs/presentation-*` evidence directory;
+never opens a physical camera or downloads model weights. `--skip-tests` reruns
+only the smoke checks. `--output` must be a new directory.
+
+`check_workspace_browser.py` optionally checks an already-running local app using
+a dedicated Chromium DevTools session (`.[qa]`). See
+[presentation guide](../docs/presentation-guide.md) for setup and limits.
+
+`build_slides.py` generates the 10-slide `docs/PPE_Presentation.pdf` from editable
+`docs/submission-slides.md`; install `.[docs]` for report generation tooling.
+
 ## Prepare the dataset
 
 ```powershell
@@ -41,8 +60,9 @@ together. It downloads the dataset directly to Colab. See `docs/phase-3-colab.md
 The PDF is committed for reading without extra packages. To regenerate it:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install reportlab
+.\.venv\Scripts\python.exe -m pip install -e ".[docs]"
 .\.venv\Scripts\python.exe scripts/build_project_report.py
+.\.venv\Scripts\python.exe scripts/build_slides.py
 ```
 
 Inputs are `docs/project-report.md` and reviewed figures in `docs/assets/`.

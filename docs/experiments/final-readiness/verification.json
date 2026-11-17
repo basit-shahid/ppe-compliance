@@ -1,0 +1,111 @@
+{
+  "checked_at_utc": "2026-11-16T18:04:55.220930+00:00",
+  "python": "3.13.3",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "torch": "2.15.0+cpu",
+  "device": "cpu",
+  "scope": "Integration and software correctness, not independent accuracy or sustained live performance.",
+  "checks": {
+    "dependencies": {
+      "passed": true,
+      "output": "No broken requirements found."
+    },
+    "automated_tests": {
+      "passed": true,
+      "summary": [
+        "----------------------------------------------------------------------",
+        "Ran 212 tests in 35.976s",
+        "",
+        "OK"
+      ]
+    },
+    "image": {
+      "passed": true,
+      "source_sha256": "d8cc6376ee97d210aeb23400970b8fa556e89ee3155e9b2fa16a6c365bae11fb",
+      "resolution": [
+        2048,
+        1152
+      ],
+      "summary": {
+        "workers": 1,
+        "PPE detected": 0,
+        "potential violation": 0,
+        "review required": 1
+      },
+      "artifacts": [
+        "annotated.png",
+        "compliance.json",
+        "detections.json",
+        "visibility-template.json"
+      ]
+    },
+    "video": {
+      "passed": true,
+      "fixture": "8-frame repeated validation still; synthetic motion",
+      "decoded_frames": 8,
+      "jsonl_rows": 8,
+      "playback_fps": 8.0,
+      "resolution": [
+        1280,
+        720
+      ],
+      "status": "completed",
+      "stop_reason": "end_of_stream",
+      "processing_fps": 6.333163340616067,
+      "total_wall_seconds": 1.560736600018572,
+      "video_sha256": "02667e17d7ea4457e9a6bb71ff25eed37375bea71c72c0d12205baa20814f7e6"
+    },
+    "invalid_images": {
+      "passed": true,
+      "rejected_cases": 3
+    }
+  },
+  "status": "passed",
+  "weights_sha256": "42538d40127ef78117cfade974369bf8ae993182442232b8faf670fd4cbc1448",
+  "wall_seconds": 54.023262900009286,
+  "automated_test_count": 212,
+  "local_artifacts": "outputs/browser-preview-tested/",
+  "verified_source_sha256": {
+    ".streamlit/config.toml": "cd583804b448237a183fe5c9a6fc694bc73ccfd94165fa9a8893516a0b4961a6",
+    "app/assets/presentation-sample.jpg": "d8cc6376ee97d210aeb23400970b8fa556e89ee3155e9b2fa16a6c365bae11fb",
+    "app/streamlit_app.py": "ca5ce0dc8d83225c9303e4c04d8af01c7652e74c019cd8f050c383bf0842fce7",
+    "app/workspace.css": "251c2644f6965bf2e6e9749592dad8b1a385254c31bc80eb2542fcc430e21e0a",
+    "pyproject.toml": "ecf5d52d9b1147c51b56a2a459891bb598a23f07e1b3b2177592becc323831ef",
+    "scripts/check_workspace_browser.py": "84a1827059f8246ec7375f03b7b6d2e5fed846427abf70c16fad0b2d5b829a2a",
+    "scripts/verify_presentation.py": "a50186a97fa87a1fca1d2dab20c24506bf82c0f7f1042a85047c6a7d6e89e6bd",
+    "src/ppe_compliance/__init__.py": "c0d1235ff695a3beff1275458b80c2c6d0c01f1639f61f5fe875b5222515a80f",
+    "src/ppe_compliance/association.py": "4d48c1ab2b77d8422a2ca95e218c79422e2914b20dde1951256c60c1ade27435",
+    "src/ppe_compliance/benchmark.py": "ba7d45f48f959b38438f5fa3f4c649d2817b9f0848319d7acea4fecac2d5fdd2",
+    "src/ppe_compliance/browser_preview.py": "ef3d763db76f80e01196b42d1260d4f751567799aa2c2741eee73cd5eb7317ce",
+    "src/ppe_compliance/cli.py": "96866cd81aa507daec6cc06885c558640a5860017543cbe784bfc9f7bbcfa3c0",
+    "src/ppe_compliance/colab_setup.py": "ca39456ffd1aebe5024425070d8649aaaaa0a5e19cc5db05748148252b907aa0",
+    "src/ppe_compliance/compliance.py": "3e5a1f5866c01cb73d92bc0c8d8650a3cf142049c5f60c7cdede29d6ab9a3ed2",
+    "src/ppe_compliance/detector.py": "6395b22c8240879e448b47e175331e443af7d504a85a95eac378807143e154c7",
+    "src/ppe_compliance/evaluation.py": "a22cd4445740d854ba4209623407e1fd649c004d82cfcb8667f2bfb35ac22f9d",
+    "src/ppe_compliance/interface.py": "033fdb724f4a7fbed0bc6f3954c777d1119673ffb990c74ea102ff97f8589fc2",
+    "src/ppe_compliance/live_pipeline.py": "ea7bc6afa6d25bac5733b8add442b7a1e99ba58fe2e2d3823b4d76b15cab671d",
+    "src/ppe_compliance/playback.py": "71c159a116fde8abd12990b858820ce71bd0254aa85954839c3833b9ed426d78",
+    "src/ppe_compliance/preview_ui.py": "24f5c9c03916a6ed9b635d93de7efcd663beb7843671ac28d29b4797f0a5541e",
+    "src/ppe_compliance/recorded_preview.py": "042a27d306bd9961262d942fcaad179675a0e026e94e22c5cd9e732bd8d50e40",
+    "src/ppe_compliance/rendering.py": "a41329aa1083a34b8e599c036a8ff66e0b0f8abeacd60fbe6986b4edd7f930fc",
+    "src/ppe_compliance/tracking.py": "5dcedd0080c258c86871a277f073d473265b8344e842e6f24c1229f8d443a208",
+    "src/ppe_compliance/video_export.py": "2cd1c66acf92f5d91a3134765910f912925bc9f13b109af67fbb3950609ab2b0",
+    "src/ppe_compliance/video_pipeline.py": "ca08d552ec0ea916d2320409913b187b6788de846e95afd00adc4d404bae6b6f",
+    "src/ppe_compliance/workspace.py": "f0e3b90d29ab9adb9151bc7b4f9457054951c658d3c2e461dee7101187835421",
+    "tests/test_assessment.py": "b2c023813764b834cb9e338491b16de7be91c76386c863f9a2c348246a6dff8d",
+    "tests/test_benchmark.py": "76f4cc51ccb25f0bd4b6d7d77648b34f6b2478f5256c218c5fd2253f5ea33887",
+    "tests/test_browser_preview.py": "59b03f656e00e54efe71deecc68ba663b4a5248f941620f2df160a0bb6727a28",
+    "tests/test_cli_assessment.py": "33e00752eb387c28050aa77eedb5bbf833943435708a8d4bcdcb556ef69fc892",
+    "tests/test_colab_setup.py": "d2ba8490fc34c650b7b30f90b44e21753942efb9ea2ee96af2b4ed0d28833f04",
+    "tests/test_detection_validation.py": "675b1dea0fb04d6adad8341775dd28e54e18c183384fca5a1df07fb64aff93de",
+    "tests/test_live_pipeline.py": "f673430aae94616915326bf26ebec9745ac75f455d522d0d3828018c49979658",
+    "tests/test_playback.py": "8057a0f7a0d36e5dad975a5849261dcb7dcab82f9fb71a989d8c3649f600796c",
+    "tests/test_preview_ui.py": "18c9b2c2aaed2bca0b6fa7a4824c0b3b01308ee8bf06527b2e1c2761f8d26717",
+    "tests/test_quality.py": "a1eb4204edbb44e8da6f9175be527cd81cc9defb56584568f531beeea505677e",
+    "tests/test_readiness.py": "2d4c23ab24c443f9a2118dffedd9fc731d8d8228656c9907074f3a1db0943a1b",
+    "tests/test_recorded_preview.py": "3f32a09077f383f6c8c6f82b0fa57745834ad4f29d89e2036f99964d485ae504",
+    "tests/test_streamlit_app.py": "a590b9df74b939f2f7253c87b55e0a949bea45ef132087b4d1b853644a9cd2ba",
+    "tests/test_tracking.py": "4014c36285ae15016cf2cbf86d9edef02f2f5e984f66dd59eaf8551667dc70e0",
+    "tests/test_video_pipeline.py": "b7087d7aaacbe773d682892bc9cb8e97138f9bbc78f949886f4a48dc14e2a73d"
+  }
+}

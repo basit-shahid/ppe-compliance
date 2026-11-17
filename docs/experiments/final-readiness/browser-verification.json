@@ -1,0 +1,22 @@
+{
+  "checks": [
+    "Desktop workspace rendered",
+    "Included sample analyzed with real model; image decoded in browser",
+    "Original and annotated source comparison images decoded",
+    "Worker evidence tab opened",
+    "Project guide rendered",
+    "Saved validation metrics rendered",
+    "Video review controls rendered",
+    "Short clip uploaded, analyzed, exported and played in the actual browser",
+    "Camera controls rendered; hardware not opened",
+    "390px viewport has no page overflow"
+  ],
+  "status": "passed",
+  "video_playback": {
+    "error": null,
+    "duration": 1,
+    "currentTime": 0.1561,
+    "decodedFrames": 5
+  },
+  "browser_exceptions": []
+}

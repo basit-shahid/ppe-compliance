@@ -50,6 +50,20 @@ class SlowModel:
 
 
 class RecordedPreviewTests(unittest.TestCase):
+    def test_headless_browser_callback_updates_during_warmup_and_cancels_playback(self):
+        updates=[]
+        def show(frame,info):
+            updates.append(dict(info))
+        with self.mocks(),patch('cv2.imshow') as gui,patch('cv2.namedWindow') as window:
+            result=self.run_review(on_preview=show,
+                stop_requested=lambda:any(item['source_sequence']>=3 for item in updates))
+        self.assertTrue(any(item['loading'] for item in updates))
+        self.assertTrue(any(item['source_sequence']>=3 for item in updates))
+        self.assertEqual(result['stop_reason'],'preview_stop')
+        self.assertLess(result['source_frames_played'],30)
+        self.assertTrue(self.reader.released)
+        gui.assert_not_called();window.assert_not_called()
+
     def setUp(self):
         self.folder = tempfile.TemporaryDirectory()
         self.addCleanup(self.folder.cleanup)

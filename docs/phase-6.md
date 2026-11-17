@@ -1,5 +1,11 @@
 # Phase 6: focused local interface and video quality
 
+Updated frontend: the 16 November PPE Vision workspace replaces the earlier
+layout with annotated/source-comparison/evidence tabs, worker cards, a demo
+sample and project-guide/validation pages. Worker reasons now appear in the
+filterable Worker evidence tab. See [presentation guide](presentation-guide.md)
+and [pipeline](pipeline.md) for the current end-to-end workflow.
+
 Run from the repository root:
 
 ```powershell
@@ -12,7 +18,7 @@ Image and Video modes accept uploads, analyze only when requested, and preserve
 results through download/rerun actions. Changing a file or processing settings
 hides the previous results until analysis is repeated. Images export lossless PNG,
 worker evidence, raw detections and a manual visibility template. Worker reasons
-live in an expandable table rather than over the picture. Corrupt files and
+live in worker cards rather than over the picture. Corrupt files and
 missing models produce readable errors.
 
 Video defaults to a 300-frame demonstration limit. Set it to 0 for a full export.
@@ -84,9 +90,11 @@ and [OpenCV capture properties](https://docs.opencv.org/4.13.0/d4/d15/group__vid
 Verification evidence is recorded in `docs/experiments/quality-ui/verification.json`.
 
 The later recorded-video update adds **Smooth live review** as the Video default:
-it launches a desktop window with original-motion playback and selected-frame AI
-in a separate timestamped pane. Choose **Analyze every frame** for the browser
-export workflow. See [recorded live review](recorded-live-review.md) for startup,
+it now defaults to an embedded browser dashboard with selected-frame AI in a
+separate timestamped pane. Camera preview is also embedded by default. Start/Stop
+controls, source/model startup status and worker errors appear in the page.
+Desktop window remains an explicit option. Choose **Analyze every frame** for
+the complete export workflow. See [recorded live review](recorded-live-review.md) for startup,
 sampling limits and the measured source submission rates.
 UI tests are optional when Streamlit is not installed. Upload interaction tests
 need a Streamlit release providing AppTest file-uploader interactions.

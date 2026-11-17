@@ -108,7 +108,7 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
                  max_frames=None, duration=None, record=False, output_fps=10.,
                  stale_after=.5, capture_context_factory=None, on_progress=None,
                  shutdown_timeout=30., tracking=False, view="dashboard", focus="live",
-                 preview_width=1280, preview_fps=60.):
+                 preview_width=1280, preview_fps=60., on_preview=None, stop_requested=None):
     """Run low-latency webcam processing. Capture and inference each own their I/O.
 
     Recording is opt-in and contains analyzed frames only, not the smooth pane.
@@ -119,6 +119,8 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
 
     if type(camera) is not int or camera < 0:
         raise ValueError("Camera index must be nonnegative")
+    if any(value is not None and not callable(value) for value in (on_preview, stop_requested)):
+        raise ValueError('Preview and stop hooks must be callable')
     if type(record) is not bool or type(preview) is not bool:
         raise ValueError("record and preview must be boolean flags")
     if type(tracking) is not bool or view not in {"dashboard","split"} or focus not in {"live","analyzed"}:
@@ -190,6 +192,12 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
     def analyze():
         writer = log = event_log = None
         try:
+            # A failed/busy camera should report immediately, without waiting
+            # for an unnecessary cold model import to finish during shutdown.
+            while frames.snapshot() is None and not stop.is_set():
+                stop.wait(.02)
+            if stop.is_set():
+                return
             load_started = perf_counter()
             detector = FrameDetector(weights, confidence, image_size, device)
             state["model_load_seconds"] = perf_counter()-load_started
@@ -300,6 +308,8 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
     try:
         capture_thread.start()
         inference_thread.start()
+        if preview or on_preview is not None:
+            preview_started = perf_counter()
         if preview:
             try:
                 cv2.namedWindow(window,cv2.WINDOW_NORMAL)
@@ -309,6 +319,9 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
             preview_started = perf_counter()
         while True:
             now = perf_counter()
+            if stop_requested is not None and stop_requested():
+                reason = 'browser_stop'
+                break
             if state["capture_error"] or state["inference_error"]:
                 raise RuntimeError(state["capture_error"] or state["inference_error"])
             if state["limit_reached"]:
@@ -323,7 +336,7 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
             render_key = (packet.sequence if packet else -1,
                           result.source.sequence if result else -1, fresh, focus,
                           int(now*5), state["model_ready"])
-            if (preview and packet is not None and render_key != last_render_key
+            if ((preview or on_preview is not None) and packet is not None and render_key != last_render_key
                     and now-last_render_at >= 1/preview_fps):
                 if view == "dashboard":
                     from ppe_compliance.preview_ui import DashboardRenderer
@@ -338,9 +351,15 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
                         focus=focus,width=preview_width)
                 else:
                     screen,fresh = compose_preview(packet,result,now,stale_after,loading=not state["model_ready"] or result is None)
-                cv2.imshow(window,screen)
+                if on_preview is not None:
+                    on_preview(screen, {'loading':not state['model_ready'] or result is None,
+                        'source_sequence':packet.sequence, 'processed_frames':state['processed'],
+                        'analysis_sequence':result.source.sequence if result is not None else None,
+                        'fresh_result':fresh, 'source_kind':'camera'})
+                if preview:
+                    cv2.imshow(window,screen)
                 last_render_key, last_render_at = render_key, perf_counter()
-                if not resized_window:
+                if preview and not resized_window:
                     try:
                         cv2.resizeWindow(window,screen.shape[1],screen.shape[0])
                     except cv2.error:
@@ -376,6 +395,8 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
         error, reason = str(failure) or type(failure).__name__, "error"
     finally:
         stop.set()
+        if preview_started is not None:
+            preview_stopped = perf_counter()
         if preview_open:
             preview_stopped = perf_counter()
             try:
@@ -389,7 +410,7 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
     unfinished = [worker.name for worker in (capture_thread,inference_thread) if worker.is_alive()]
     error = error or state["capture_error"] or state["inference_error"]
     if unfinished:
-        error = "Native capture/inference did not stop within timeout; resource finalization is not confirmed: "+", ".join(unfinished)
+        error = (f'{error}; ' if error else '') + "Native capture/inference did not stop within timeout; resource finalization is not confirmed: "+", ".join(unfinished)
     ended = perf_counter()
     count = state["processed"]
     active = ((state["inference_finished"] or ended)-state["inference_started"]) if state["inference_started"] else 0
@@ -419,7 +440,8 @@ def process_live(camera=0, weights="models/best.pt", confidence=.25, image_size=
         "captured_but_not_processed":state["captured"]-count,"intentional_frame_skipping":True,
         "total_wall_seconds":ended-started,"inference_active_seconds":active,
         "assessment_throughput_fps":count/active if active else 0.,
-        "preview_enabled":preview,"preview_ticks":ticks,"unique_live_frames_displayed":shown_live,
+        "preview_enabled":preview,"browser_preview_enabled":on_preview is not None,
+        "preview_ticks":ticks,"unique_live_frames_displayed":shown_live,
         "distinct_recent_results_displayed":shown_results,"preview_active_seconds":preview_seconds,
         "live_preview_fps":shown_live/preview_seconds if preview_seconds else None,
         "model_load_seconds":state["model_load_seconds"],"stale_after_seconds":stale_after,

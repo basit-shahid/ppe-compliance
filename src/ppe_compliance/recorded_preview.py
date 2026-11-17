@@ -216,7 +216,8 @@ class PrefetchedReader:
 def review_recorded_video(source, weights='models/best.pt', confidence=.25, image_size=416,
                           device='cpu', output_dir=Path('outputs'), processing_height=540,
                           max_frames=None, rules=None, tracking=True, preview=True,
-                          detail=False, show_scores=True, on_progress=None, shutdown_timeout=30., analysis_fps=2.5):
+                          detail=False, show_scores=True, on_progress=None, shutdown_timeout=30., analysis_fps=2.5,
+                          on_preview=None, stop_requested=None):
     """Display every source frame in order; score only fresh selected frames.
 
     Results always retain their own source image/time in the separate analysis
@@ -226,6 +227,8 @@ def review_recorded_video(source, weights='models/best.pt', confidence=.25, imag
     import cv2
 
     source = Path(source).resolve()
+    if any(value is not None and not callable(value) for value in (on_preview, stop_requested)):
+        raise ValueError('Preview and stop hooks must be callable')
     if not source.is_file():
         raise ValueError(f'Source video not found: {source}')
     if type(processing_height) is not int or processing_height <= 0:
@@ -370,6 +373,9 @@ def review_recorded_video(source, weights='models/best.pt', confidence=.25, imag
     def events_until(deadline, pump=False):
         nonlocal focus
         while True:
+            if stop_requested is not None and stop_requested():
+                stop.set()
+                return
             remaining = deadline-perf_counter()
             if remaining <= 0 and not pump: return
             if preview:
@@ -384,7 +390,7 @@ def review_recorded_video(source, weights='models/best.pt', confidence=.25, imag
 
     def show(packet, loading=False):
         nonlocal canvas, canvas_key, ui_updated_at
-        if not preview: return
+        if not preview and on_preview is None: return
         now = perf_counter()
         result = results.snapshot()
         elapsed = now-playback_started if playback_started is not None else 0.
@@ -400,7 +406,14 @@ def review_recorded_video(source, weights='models/best.pt', confidence=.25, imag
             canvas_key,ui_updated_at = key,now
         else:
             renderer.update_source(canvas,packet,focus)
-        cv2.imshow(window,canvas)
+        if on_preview is not None:
+            on_preview(canvas, {'loading':loading, 'source_sequence':packet.sequence,
+                'source_time_seconds':max(0,packet.sequence)/fps,
+                'processed_frames':state['processed'],
+                'analysis_sequence':result.source.sequence if result is not None else None,
+                'source_kind':'video'})
+        if preview:
+            cv2.imshow(window,canvas)
 
     try:
         if preview:
@@ -495,6 +508,7 @@ def review_recorded_video(source, weights='models/best.pt', confidence=.25, imag
         'frame_hash_scope':'streamed_processing_bgr','analysis_fps_limit':analysis_fps,
         'playback_source':state['playback_source'],'playback_source_preparation':state['source_preparation'],
         'preparation_seconds':state['preparation_seconds'],
+        'browser_preview_enabled':on_preview is not None,
         'weights':str(weights),'weights_sha256':state['weights_sha256'],'device':device,
         'source_frames_played':played,'processed_frames':state['processed'],
         'source_frames_not_analyzed':played-state['processed'],'intentional_analysis_sampling':True,

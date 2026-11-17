@@ -104,6 +104,27 @@ class LatestSlotTests(unittest.TestCase):
 
 
 class LiveTests(unittest.TestCase):
+    def test_unreadable_camera_reports_source_error_before_loading_model(self):
+        self.camera.fail_at=0
+        with self.assertRaisesRegex(RuntimeError,'Camera stopped returning frames'):
+            self.run_live()
+        self.constructor.assert_not_called()
+        self.assertTrue(self.camera.released)
+
+    def test_headless_browser_callback_has_frames_and_can_stop_without_gui(self):
+        callbacks=[]
+        def show(frame,info):
+            callbacks.append((frame.copy(),dict(info)))
+        with patch('cv2.imshow') as gui,patch('cv2.namedWindow') as window:
+            result=process_live(output_dir=self.root/'browser',preview=False,view='split',
+                capture_context_factory=self.capture,on_preview=show,
+                stop_requested=lambda:len(callbacks)>=3,preview_fps=30,duration=2)
+        self.assertEqual(result['stop_reason'],'browser_stop')
+        self.assertGreaterEqual(len(callbacks),3)
+        self.assertEqual(callbacks[0][1]['source_kind'],'camera')
+        self.assertTrue(self.camera.released)
+        gui.assert_not_called();window.assert_not_called()
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
         self.root=Path(self.temp.name)
